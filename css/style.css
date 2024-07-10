@@ -1249,7 +1249,7 @@ html.has-scroll-dragging {
   height: 70px;
   position: absolute;
   left: -50%;
-  z-index: 1;
+  z-index: 3;
   -webkit-transform: rotate(-6deg);
   transform: rotate(-6deg);
   overflow: hidden;
@@ -1257,17 +1257,14 @@ html.has-scroll-dragging {
 
 .hero__back span:nth-child(1) {
   bottom: 350px;
-  background-color: var(--bg-gray);
 }
 
 .hero__back span:nth-child(2) {
   bottom: 280px;
-  background-color: var(--bg);
 }
 
 .hero__back span:nth-child(3) {
   bottom: 210px;
-  background-color: var(--bg);
 }
 
 .hero__back span:nth-child(1)::before,
@@ -1332,7 +1329,7 @@ html.has-scroll-dragging {
 .hero__block {
   padding: 50px 0 180px;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 
 .hero__flex {
