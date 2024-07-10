@@ -261,10 +261,10 @@ if(heroSlider){
     loopedSlides: 1,
     spaceBetween: 20,
     speed: 300,
-    // autoplay: {
-    //   delay: 4000,
-    //   disableOnInteraction: false
-    // },
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false
+    },
     pagination: {
       el: '.hero__pagination',
       type: 'bullets',
@@ -300,6 +300,23 @@ if(heroSlider){
   document.querySelector('.hero__total').innerHTML = herototalzero + document.querySelector('.hero___wrapper').children.length;
 }
 // end hero___swiper
+
+// start products_slider
+if (document.querySelector(".products_slider__swiper")) {
+  document.querySelectorAll(".products_slider__swiper").forEach((n) => {
+    const slider = new Swiper(n.querySelector(".products_slider__container"), {
+      loop: false,
+      slidesPerView: 4,
+      speed: 500,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: n.querySelector(".products_slider__next"),
+        prevEl: n.querySelector(".products_slider__prev"),
+      },
+    });
+  });
+}
+// end products_slider
 
 // start partner__list
 const partnerlist = document.querySelector('.partner__list');
