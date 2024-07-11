@@ -106,10 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.onmousemove = (event) => {
     moveCursor(event);
+    cursor.classList.remove("active");
   };
 
   document.onpointermove = (event) => {
     moveCursor(event);
+    cursor.classList.remove("active");
   };
 
   document.addEventListener('mousedown', function(){
@@ -261,10 +263,10 @@ if(heroSlider){
     loopedSlides: 1,
     spaceBetween: 20,
     speed: 300,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false
-    },
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: false
+    // },
     pagination: {
       el: '.hero__pagination',
       type: 'bullets',
