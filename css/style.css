@@ -1242,9 +1242,9 @@ html.has-scroll-dragging {
   transform: rotate(-6deg);
 }
 
-.hero__back span:nth-child(1),
-.hero__back span:nth-child(2),
-.hero__back span:nth-child(3) {
+.hero__back_line:nth-child(1),
+.hero__back_line:nth-child(2),
+.hero__back_line:nth-child(3) {
   width: 200%;
   height: 70px;
   position: absolute;
@@ -1255,23 +1255,23 @@ html.has-scroll-dragging {
   overflow: hidden;
 }
 
-.hero__back span:nth-child(1) {
+.hero__back_line:nth-child(1) {
   bottom: 350px;
 }
 
-.hero__back span:nth-child(2) {
+.hero__back_line:nth-child(2) {
   bottom: 280px;
 }
 
-.hero__back span:nth-child(3) {
+.hero__back_line:nth-child(3) {
   bottom: 210px;
 }
 
-.hero__back span:nth-child(1)::before,
-.hero__back span:nth-child(2)::before,
-.hero__back span:nth-child(2)::after,
-.hero__back span:nth-child(3)::before,
-.hero__back span:nth-child(3)::after {
+.hero__back_line:nth-child(1)::before,
+.hero__back_line:nth-child(2)::before,
+.hero__back_line:nth-child(2)::after,
+.hero__back_line:nth-child(3)::before,
+.hero__back_line:nth-child(3)::after {
   content: "";
   height: 100%;
   position: absolute;
@@ -1281,37 +1281,41 @@ html.has-scroll-dragging {
   -webkit-animation: gradient-back 5s ease infinite;
   animation: gradient-back 5s ease infinite;
   clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
-  background-size: 400% 400%;
 }
 
-.hero__back span:nth-child(1)::before {
+.hero__back_line:nth-child(1)::before {
   width: 10%;
   left: 64.7%;
   background: linear-gradient(-45deg, #f94f63, #d74f8c, #b73cb7, #7b5bdd);
+  background-size: 400% 400%;
 }
 
-.hero__back span:nth-child(2)::before {
+.hero__back_line:nth-child(2)::before {
   width: 15%;
   left: 62%;
   background: linear-gradient(-45deg, #ff9831, #f94f63, #f9007d, #ff9831);
+  background-size: 400% 400%;
 }
 
-.hero__back span:nth-child(2)::after {
+.hero__back_line:nth-child(2)::after {
   width: 15%;
   left: 22%;
   background: linear-gradient(-45deg, #f94f63, #d74f8c, #b73cb7, #7b5bdd);
+  background-size: 400% 400%;
 }
 
-.hero__back span:nth-child(3)::before {
+.hero__back_line:nth-child(3)::before {
   width: 7%;
   left: 70%;
   background: linear-gradient(-45deg, #ff9831, #ff9831, #f94f63, #f9007d);
+  background-size: 400% 400%;
 }
 
-.hero__back span:nth-child(3)::after {
+.hero__back_line:nth-child(3)::after {
   width: 8%;
   left: 24%;
   background: linear-gradient(-45deg, #ff9831, #ff9831, #f94f63, #f9007d);
+  background-size: 400% 400%;
 }
 
 @-webkit-keyframes gradient-back {
