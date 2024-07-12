@@ -320,6 +320,58 @@ if (document.querySelector(".products_slider__swiper")) {
 }
 // end products_slider
 
+// start history___swiper
+const historySlider = document.querySelector('.history___swiper');
+if(historySlider){
+  var historySwiper = new Swiper('.history___swiper', {
+    loop: true,
+    effect: "fade",
+    slidesPerView: 1,
+    loopedSlides: 1,
+    spaceBetween: 20,
+    speed: 300,
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: false
+    // },
+    pagination: {
+      el: '.history__pagination',
+      type: 'bullets',
+      renderBullet: function (index, className) {
+        console.log(className)
+        if((index + 1) >= 10) {
+          var historycountzero = '';
+        } else {
+          var historycountzero = '0';
+        }
+        return '<span class="' + className + '">' + '<span class="count">' + historycountzero + (index + 1) + "</span>" + "</span>";
+      },
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".history__next",
+      prevEl: ".history__prev"
+    },
+    on: {
+      slideChange: function (swiper) {
+        const count = document.querySelector('.history__pagination .swiper-pagination-bullet-active .count');
+        if (count) {
+          const historycount = document.querySelector('.history__count');
+          historycount.innerHTML = count.innerHTML;
+        }
+        console.log('2')
+      }
+    }
+  });
+  if(document.querySelector('.history___wrapper').children.length >= 10) {
+    var historytotalzero = '';
+  } else {
+    var historytotalzero = '0';
+  }
+  document.querySelector('.history__total').innerHTML = historytotalzero + document.querySelector('.history___wrapper').children.length;
+}
+// end history___swiper
+
 // start partner__list
 const partnerlist = document.querySelector('.partner__list');
 if(partnerlist){
@@ -359,3 +411,56 @@ if(partnerlist){
   });
 }
 // end partner__list
+
+// start canwedo__information
+const canwedoButton = document.querySelector('.canwedo__button');
+const canwedoButtonActive = document.querySelectorAll(".canwedo__buttons .canwedo__button");
+const canwedoButtonOne = document.querySelector('.canwedo__button_one');
+const canwedoButtonTwo = document.querySelector('.canwedo__button_two');
+const canwedoButtonThree = document.querySelector('.canwedo__button_three');
+const canwedoButtonFour = document.querySelector('.canwedo__button_four');
+
+const canwedoinformationActive = document.querySelectorAll(".canwedo__informations .canwedo__information");
+const canwedoinformationOne = document.querySelector('.canwedo__information_one');
+const canwedoinformationTwo = document.querySelector('.canwedo__information_two');
+const canwedoinformationThree = document.querySelector('.canwedo__information_three');
+const canwedoinformationFour = document.querySelector('.canwedo__information_four');
+
+if (canwedoButtonOne && canwedoButtonTwo && canwedoButtonThree) {
+  canwedoButtonOne.addEventListener('click', function() {
+    if (!canwedoButtonOne.classList.contains("active")) {
+      canwedoButtonActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationOne.classList.add("active");
+      canwedoButtonOne.classList.add("active");
+    }
+  })
+  
+  canwedoButtonTwo.addEventListener('click', function() {
+    if (!canwedoButtonTwo.classList.contains("active")) {
+      canwedoButtonActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationTwo.classList.add("active");
+      canwedoButtonTwo.classList.add("active");
+    }
+  })
+  
+  canwedoButtonThree.addEventListener('click', function() {
+    if (!canwedoButtonThree.classList.contains("active")) {
+      canwedoButtonActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationThree.classList.add("active");
+      canwedoButtonThree.classList.add("active");
+    }
+  })
+  
+  canwedoButtonFour.addEventListener('click', function() {
+    if (!canwedoButtonFour.classList.contains("active")) {
+      canwedoButtonActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationActive.forEach((n) => n.classList.remove("active"));
+      canwedoinformationFour.classList.add("active");
+      canwedoButtonFour.classList.add("active");
+    }
+  })
+}
+// end canwedo__information
