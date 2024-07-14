@@ -322,6 +322,7 @@ if (document.querySelector(".products_slider__swiper")) {
 
 // start history___swiper
 const historySlider = document.querySelector('.history___swiper');
+const historyActive = document.querySelectorAll(".history__rotate .history__information");
 if(historySlider){
   var historySwiper = new Swiper('.history___swiper', {
     loop: true,
@@ -329,6 +330,7 @@ if(historySlider){
     slidesPerView: 1,
     loopedSlides: 1,
     spaceBetween: 20,
+    a11y: false,
     speed: 300,
     // autoplay: {
     //   delay: 4000,
@@ -338,13 +340,12 @@ if(historySlider){
       el: '.history__pagination',
       type: 'bullets',
       renderBullet: function (index, className) {
-        console.log(className)
         if((index + 1) >= 10) {
           var historycountzero = '';
         } else {
           var historycountzero = '0';
         }
-        return '<span class="' + className + '">' + '<span class="count">' + historycountzero + (index + 1) + "</span>" + "</span>";
+        return '<span class="' + className + '" index="' + (index + 1) + '">' + '<span class="count">' + historycountzero + (index + 1) + "</span>" + "</span>";
       },
       clickable: true,
     },
@@ -359,7 +360,45 @@ if(historySlider){
           const historycount = document.querySelector('.history__count');
           historycount.innerHTML = count.innerHTML;
         }
-        console.log('2')
+
+        let index = document.querySelector('.history__pagination .swiper-pagination-bullet-active').getAttribute('index');
+        historyActive.forEach((n) => n.classList.remove("active"));
+        document.querySelector(".history__rotate").children[index-1].classList.add("active");
+        const total = document.querySelector('.history__rotate').children.length;
+        const rotate = 360 / total;
+        let information = document.querySelectorAll(".history__information");
+        let rotateNext = (index-1)*rotate;
+        document.querySelector('.history__rotate').style.transform = 'rotate(' + (360 - rotateNext) + 'deg)';
+        for (let i = 0; i < information.length; i++) {
+          information[i].children[0].style.transform = 'rotate(' + (0 - (((i+1)*rotate)-rotateNext)) + 'deg)';
+        }
+
+        let startTime = 0.0;
+        let numberFrom = 0;
+        let numberTo = 0;
+        let date = document.querySelector(".history__date");
+        let animEvent = null;
+        function animateText() {
+          let now = Date.now();
+          if (now < startTime+500) {
+            let lapsedTimeNorm = (now-startTime)/500;
+            let interval = numberTo-numberFrom;
+            date.innerText = Math.round(numberFrom + interval* lapsedTimeNorm);
+            animEvent = window.requestAnimationFrame(animateText);
+          } else {
+            date.innerText = numberTo;
+            animEvent = null;
+          }
+        }
+        function initAnimation(to) {
+          startTime = Date.now();
+          numberFrom = parseInt(date.innerText);
+          numberTo = to;
+          if (animEvent==null) {
+            animEvent = window.requestAnimationFrame(animateText);
+          }
+        }
+        initAnimation(document.querySelector(".history__rotate").children[index-1].getAttribute('historydate'));
       }
     }
   });
@@ -368,7 +407,33 @@ if(historySlider){
   } else {
     var historytotalzero = '0';
   }
+
   document.querySelector('.history__total').innerHTML = historytotalzero + document.querySelector('.history___wrapper').children.length;
+  document.querySelector('.history__rotate').style.transform = 'rotate(' + 360  + 'deg)';
+
+  const historycounter = document.querySelectorAll('.history__rotate');
+  [...historycounter].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){
+    elem.children[0].children[0].children[0].children[0].innerHTML = index+1;
+    elem.children[0].children[0].setAttribute("index", index);
+  }});
+  
+  document.querySelector('.history__rotate').style.height = document.querySelector('.history__rotate').clientWidth + 'px';
+  document.querySelector('.history__rotate').children[0].classList.add('active');
+  const historyTotal = document.querySelector('.history__rotate').children.length;
+  const historyRotate = 360 / historyTotal;
+  let historyInformation = document.querySelectorAll(".history__information");
+  for (let i = 0; i < historyInformation.length; i++) {
+    historyInformation[i].style.transform = 'rotate(' + ((i+1)*historyRotate) + 'deg)';
+    historyInformation[i].children[0].style.transform = 'rotate(' + '-' + ((i+1)*historyRotate) + 'deg)';
+  }
+  document.querySelector(".history__date").innerText = document.querySelector(".history__rotate").children[0].getAttribute('historydate');
+  
+  const historyButton = document.getElementsByClassName("history__button");
+  for (i = 0; i < historyButton.length; i++) {
+    historyButton[i].onclick = function(e) {
+      historySwiper.slideToLoop(this.getAttribute('index'), 0);
+    }
+  }
 }
 // end history___swiper
 

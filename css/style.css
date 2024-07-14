@@ -2320,8 +2320,8 @@ html.has-scroll-dragging {
 
 .history__rotate {
   position: relative;
-  height: 575px;
   width: 575px;
+  height: 575px;
   z-index: 1;
   -webkit-transition: -webkit-transform 0.5s linear;
   transition: transform 0.5s linear;
@@ -2346,20 +2346,17 @@ html.has-scroll-dragging {
   transform-origin: 50% 100%;
 }
 
-.history__information:nth-child(2) { transform: rotate(60deg); }
-.history__information:nth-child(3) { transform: rotate(120deg); }
-.history__information:nth-child(4) { transform: rotate(180deg); }
-.history__information:nth-child(5) { transform: rotate(240deg); }
-.history__information:nth-child(6) { transform: rotate(300deg); }
-
 .history__subrotate {
   display: flex;
   height: 75px;
   width: 75px;
   align-items: center;
   justify-content: center;
-  transform-origin: 50% 37.5px;
   position: relative;
+  -webkit-transform-origin: 50% 37.5px;
+  transform-origin: 50% 37.5px;
+  -webkit-transition: -webkit-transform 0.5s linear;
+  transition: transform 0.5s linear;
 }
 
 .history__button {
@@ -2410,14 +2407,27 @@ html.has-scroll-dragging {
   opacity: 1;
 }
 
-.history__information:nth-child(2) .history__subrotate { transform: rotate(-60deg); }
-.history__information:nth-child(3) .history__subrotate { transform: rotate(-120deg); }
-.history__information:nth-child(4) .history__subrotate { transform: rotate(-180deg); }
-.history__information:nth-child(5) .history__subrotate { transform: rotate(-240deg); }
-.history__information:nth-child(6) .history__subrotate { transform: rotate(-300deg); }
-
 .history__heading {
-  display: none;
+  position: absolute;
+  top: 50%;
+  left: 95px;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
+  transition: visibility 0.2s linear, opacity 0.2s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+  white-space: nowrap
+}
+
+.history__information.active .history__heading {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
 }
 
 .history__date {
