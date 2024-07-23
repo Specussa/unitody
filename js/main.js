@@ -216,8 +216,9 @@ if(domen){
 // end domen
 
 const overlay = document.querySelector('.overlay');
-const menu = document.querySelector('.header__nav');
+const menu = document.querySelector('.header__navigation');
 const burger = document.querySelector('.header__burger');
+const headerClose = document.querySelector('.header__close');
 const menuItemActive = document.getElementsByClassName("header__nav_item active");
 
 // button header__burger
@@ -227,8 +228,8 @@ burger.addEventListener('click', function() {
     menu.classList.remove("active");
     burger.classList.remove("active");
     header.classList.remove("active");
-    document.body.style.overflow = null;
-    document.body.style.height = null;
+    headerClose.classList.remove("active");
+    document.documentElement.classList.remove("noscroll");
     // for (var i = 0; i < menuItemActive.length; i++) {
     //   menuItemActive[i].children[1].style.maxHeight = null;
     //   menuItemActive[i].children[1].classList.remove("active");
@@ -240,8 +241,8 @@ burger.addEventListener('click', function() {
     menu.classList.add("active");
     burger.classList.add("active");
     header.classList.add("active");
-    document.body.style.overflow = "hidden";
-    document.body.style.height = "100vh";
+    headerClose.classList.add("active");
+    document.documentElement.classList.add("noscroll");
     // for (var i = 0; i < menuItemActive.length; i++) {
     //   menuItemActive[i].children[1].style.maxHeight = null;
     //   menuItemActive[i].children[1].classList.remove("active");
@@ -252,6 +253,198 @@ burger.addEventListener('click', function() {
   }
 })
 // end header__burger
+
+// end header__popup
+const headerPopup = document.querySelector('.header__popup');
+const headerNavClose = document.querySelector('.header__navigation_close');
+const headerNavLinkActive = document.querySelectorAll(".header .header__nav_link");
+const headerPopupActive = document.querySelectorAll(".header .header__popup");
+const headerSublinkActive = document.querySelectorAll(".header .header__sublink");
+const headerSubNavActive = document.querySelectorAll(".header .header__subnav");
+const headerSubSubNavActive = document.querySelectorAll(".header .header__subsubnav");
+const headerNavLeftActive = document.querySelectorAll(".header .header__nav_left");
+const headerNavRightActive = document.querySelectorAll(".header .header__nav_right");
+if(headerPopup){
+  const headerNavLink = document.querySelectorAll('.header__nav_link');
+  const headerNavigation = document.querySelectorAll('.header__navigation');
+  headerNavLink.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      if(item.nextElementSibling && !item.nextElementSibling.classList.contains("active")) {
+        headerPopupActive.forEach((n) => n.classList.remove("active"));
+        headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+        headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+        headerNavRightActive.forEach((n) => n.classList.remove("active"));
+        headerSublinkActive.forEach((n) => n.classList.remove("active"));
+        headerSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+        item.classList.add("active");
+        item.nextElementSibling.classList.add("active");
+        overlay.classList.add("active");
+        document.documentElement.classList.add("noscroll");
+        scroll.stop();
+      } else if (!item.nextElementSibling) {
+        headerPopupActive.forEach((n) => n.classList.remove("active"));
+        headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+        headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+        headerNavRightActive.forEach((n) => n.classList.remove("active"));
+        headerSublinkActive.forEach((n) => n.classList.remove("active"));
+        headerSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+        overlay.classList.remove("active");
+        document.documentElement.classList.remove("noscroll");
+        scroll.start();
+      }
+    })
+  })
+  headerNavigation.forEach(item => {
+    item.addEventListener('mouseleave', () => {
+      headerPopupActive.forEach((n) => n.classList.remove("active"));
+      headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+      headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+      headerNavRightActive.forEach((n) => n.classList.remove("active"));
+      headerSublinkActive.forEach((n) => n.classList.remove("active"));
+      headerSubNavActive.forEach((n) => n.classList.remove("active"));
+      headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+      overlay.classList.remove("active");
+      document.documentElement.classList.remove("noscroll");
+      scroll.start();
+    });
+  })
+
+  const headerSubLink = document.querySelectorAll('.header__sublink');
+  headerSubLink.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      let index = item.parentElement ? [...item.parentElement.parentNode.children].indexOf(item.parentElement) : -1;
+      if(!item.parentElement.classList.contains("active") && item.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index]) {
+        headerSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSublinkActive.forEach((n) => n.classList.remove("active"));
+        item.classList.add("active");
+        item.parentElement.classList.add("active");
+        item.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index].classList.add("active");
+        overlay.classList.add("active");
+        document.documentElement.classList.add("noscroll");
+        scroll.stop();
+      }
+    })
+  })
+
+  headerNavClose.addEventListener('click', function() {
+    headerPopupActive.forEach((n) => n.classList.remove("active"));
+    headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+    headerSubNavActive.forEach((n) => n.classList.remove("active"));
+    headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+    headerSublinkActive.forEach((n) => n.classList.remove("active"));
+    headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+    headerNavRightActive.forEach((n) => n.classList.remove("active"));
+    overlay.classList.remove("active");
+    menu.classList.remove("active");
+    burger.classList.remove("active");
+    header.classList.remove("active");
+    headerClose.classList.remove("active");
+    scroll.start();
+  })
+
+  const headerPopupClose = document.getElementsByClassName('header__popup_close');
+  for (i = 0; i < headerPopupClose.length; i++) {
+    headerPopupClose[i].onclick = function(e) {
+      headerPopupActive.forEach((n) => n.classList.remove("active"));
+      headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+      headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+      headerNavRightActive.forEach((n) => n.classList.remove("active"));
+    };
+  }
+  
+  const headerNLClose = document.getElementsByClassName('header__nav_left_close');
+  for (i = 0; i < headerNLClose.length; i++) {
+    headerNLClose[i].onclick = function(e) {
+      headerPopupActive.forEach((n) => n.classList.remove("active"));
+      headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+      headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+    };
+  }
+  
+  const headerNRClose = document.getElementsByClassName('header__nav_right_close');
+  for (i = 0; i < headerNRClose.length; i++) {
+    headerNRClose[i].onclick = function(e) {
+      headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+      headerSublinkActive.forEach((n) => n.classList.remove("active"));
+      headerNavRightActive.forEach((n) => n.classList.remove("active"));
+    };
+  }
+  
+  const hnlSvg = document.getElementsByClassName("header__nav_link_svg");
+  for (i = 0; i < hnlSvg.length; i++) {
+    hnlSvg[i].onclick = function(e) {
+      if (this.parentElement.nextElementSibling) {
+        e.preventDefault();
+        headerSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSublinkActive.forEach((n) => n.classList.remove("active"));
+        this.parentElement.classList.add("active");
+        this.parentElement.nextElementSibling.classList.add("active");
+        this.parentElement.nextElementSibling.children[0].children[1].children[0].classList.add("active");
+        overlay.classList.add("active");
+        document.documentElement.classList.add("noscroll");
+        scroll.stop();
+      }
+    };
+  }
+  
+  const hslSvg = document.getElementsByClassName("header__sublink_svg");
+  for (i = 0; i < hslSvg.length; i++) {
+    hslSvg[i].onclick = function(e) {
+      e.preventDefault();
+      headerSubNavActive.forEach((n) => n.classList.remove("active"));
+      headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+      headerSublinkActive.forEach((n) => n.classList.remove("active"));
+      this.parentElement.classList.add("active");
+      this.parentElement.parentElement.parentElement.parentElement.nextElementSibling.classList.add("active");
+      let index = this.parentElement.parentElement ? [...this.parentElement.parentElement.parentNode.children].indexOf(this.parentElement.parentElement) : -1;
+      this.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index].classList.add("active");
+      overlay.classList.add("active");
+      document.documentElement.classList.add("noscroll");
+      scroll.stop();
+    };
+  }
+
+  const headerNavLeftScroll = document.querySelectorAll('.header__nav_left .header__nav_scroll');
+  [...headerNavLeftScroll].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){elem.style.setProperty('--inc-step', index+1);}});
+  const headerNavList = document.querySelectorAll('.header__nav_list');
+  [...headerNavList].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){elem.style.setProperty('--inc-step', index+1);}});
+  const headerSubSubNav = document.querySelectorAll('.header__subsubnav');
+  [...headerSubSubNav].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){elem.style.setProperty('--inc-step', index+1);}});
+}
+// end header__popup
+
+// button overlay
+headerClose.addEventListener('click', function() {
+  headerPopupActive.forEach((n) => n.classList.remove("active"));
+  headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+  headerSubNavActive.forEach((n) => n.classList.remove("active"));
+  headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+  headerSublinkActive.forEach((n) => n.classList.remove("active"));
+  overlay.classList.remove("active");
+  menu.classList.remove("active");
+  burger.classList.remove("active");
+  header.classList.remove("active");
+  headerClose.classList.remove("active");
+  scroll.start();
+})
+overlay.addEventListener('click', function() {
+  headerPopupActive.forEach((n) => n.classList.remove("active"));
+  headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+  headerSubNavActive.forEach((n) => n.classList.remove("active"));
+  headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+  headerSublinkActive.forEach((n) => n.classList.remove("active"));
+  overlay.classList.remove("active");
+  menu.classList.remove("active");
+  burger.classList.remove("active");
+  header.classList.remove("active");
+  headerClose.classList.remove("active");
+  scroll.start();
+})
+// end overlay
 
 // start hero___swiper
 const heroSlider = document.querySelector('.hero___swiper');
@@ -299,7 +492,9 @@ if(heroSlider){
   } else {
     var herototalzero = '0';
   }
+  if(document.querySelector('.hero__total')) {
   document.querySelector('.hero__total').innerHTML = herototalzero + document.querySelector('.hero___wrapper').children.length;
+  }
 }
 // end hero___swiper
 
@@ -308,15 +503,53 @@ if (document.querySelector(".products_slider__swiper")) {
   document.querySelectorAll(".products_slider__swiper").forEach((n) => {
     const slider = new Swiper(n.querySelector(".products_slider__container"), {
       loop: false,
-      slidesPerView: 4,
+      slidesPerView: 1.1,
       speed: 500,
       spaceBetween: 20,
       navigation: {
         nextEl: n.querySelector(".products_slider__next"),
         prevEl: n.querySelector(".products_slider__prev"),
       },
+      pagination: {
+        el: n.querySelector(".products__pagination"),
+        type: 'bullets',
+        renderBullet: function (index, className) {
+          if((index + 1) >= 10) {
+            var productscountzero = '';
+          } else {
+            var productscountzero = '0';
+          }
+          return '<span class="' + className + '">' + '<span class="count">' + productscountzero + (index + 1) + "</span>" + "</span>";
+        },
+        clickable: true,
+      },
+      breakpoints: {
+        1280: {
+          slidesPerView: 4,
+        },
+        768:{
+          slidesPerView: 2,
+        },
+      },
+      on: {
+        slideChange: function (swiper) {
+          const count = n.querySelector('.products__pagination .swiper-pagination-bullet-active .count');
+          if (count) {
+            const herocount = n.querySelector('.products__count');
+            herocount.innerHTML = count.innerHTML;
+          }
+        }
+      }
     });
+    
+  if(n.querySelector('.products_slider__list').children.length >= 10) {
+    var productscountzero  = '';
+  } else {
+    var productscountzero  = '0';
+  }
+  n.querySelector('.products__total').innerHTML = productscountzero  + n.querySelector('.products_slider__list').children.length;
   });
+  
 }
 // end products_slider
 
@@ -529,3 +762,69 @@ if (canwedoButtonOne && canwedoButtonTwo && canwedoButtonThree) {
   })
 }
 // end canwedo__information
+
+// start terminals__information
+const terminalsButton = document.querySelector('.terminals__button');
+const terminalsButtonActive = document.querySelectorAll(".terminals__buttons .terminals__button");
+const terminalsButtonOne = document.querySelector('.terminals__button_one');
+const terminalsButtonTwo = document.querySelector('.terminals__button_two');
+const terminalsButtonThree = document.querySelector('.terminals__button_three');
+const terminalsButtonFour = document.querySelector('.terminals__button_four');
+const terminalsButtonFive = document.querySelector('.terminals__button_five');
+
+const terminalsinformationActive = document.querySelectorAll(".terminals__informations .terminals__information");
+const terminalsinformationOne = document.querySelector('.terminals__information_one');
+const terminalsinformationTwo = document.querySelector('.terminals__information_two');
+const terminalsinformationThree = document.querySelector('.terminals__information_three');
+const terminalsinformationFour = document.querySelector('.terminals__information_four');
+const terminalsinformationFive = document.querySelector('.terminals__information_five');
+
+if (terminalsButtonOne && terminalsButtonTwo && terminalsButtonThree) {
+  console.log('kkk')
+  terminalsButtonOne.addEventListener('click', function() {
+    
+    if (!terminalsButtonOne.classList.contains("active")) {
+      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationOne.classList.add("active");
+      terminalsButtonOne.classList.add("active");
+    }
+  })
+  
+  terminalsButtonTwo.addEventListener('click', function() {
+    if (!terminalsButtonTwo.classList.contains("active")) {
+      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationTwo.classList.add("active");
+      terminalsButtonTwo.classList.add("active");
+    }
+  })
+  
+  terminalsButtonThree.addEventListener('click', function() {
+    if (!terminalsButtonThree.classList.contains("active")) {
+      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationThree.classList.add("active");
+      terminalsButtonThree.classList.add("active");
+    }
+  })
+  
+  terminalsButtonFour.addEventListener('click', function() {
+    if (!terminalsButtonFour.classList.contains("active")) {
+      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationFour.classList.add("active");
+      terminalsButtonFour.classList.add("active");
+    }
+  })
+
+  terminalsButtonFive.addEventListener('click', function() {
+    if (!terminalsButtonFive.classList.contains("active")) {
+      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
+      terminalsinformationFour.classList.add("active");
+      terminalsButtonFive.classList.add("active");
+    }
+  })
+}
+// end terminals__information
