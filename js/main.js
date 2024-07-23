@@ -7,6 +7,7 @@ const appHeight = () => {
   var newWidth = window.innerWidth;
   if (newWidth != oldWidth) {
     docheight.style.setProperty('--height', `${window.innerHeight}px`);
+    document.querySelector('.history__rotate').style.height = document.querySelector('.history__rotate').clientWidth + 'px';
   }
   oldWidth = window.innerWidth;
 }
@@ -605,6 +606,8 @@ if(historySlider){
         for (let i = 0; i < information.length; i++) {
           information[i].children[0].style.transform = 'rotate(' + (0 - (((i+1)*rotate)-rotateNext)) + 'deg)';
         }
+        document.querySelector(".history__text_mobile").innerText = document.querySelector(".history__information.active").children[0].children[0].children[0].children[0].innerText;
+        document.querySelector(".history__heading_mobile").innerText = document.querySelector(".history__information.active").children[0].children[1].innerText;
 
         let startTime = 0.0;
         let numberFrom = 0;
@@ -660,7 +663,8 @@ if(historySlider){
     historyInformation[i].children[0].style.transform = 'rotate(' + '-' + ((i+1)*historyRotate) + 'deg)';
   }
   document.querySelector(".history__date").innerText = document.querySelector(".history__rotate").children[0].getAttribute('historydate');
-  
+  document.querySelector(".history__text_mobile").innerText = document.querySelector(".history__information.active").children[0].children[0].children[0].children[0].innerText;
+  document.querySelector(".history__heading_mobile").innerText = document.querySelector(".history__information.active").children[0].children[1].innerText;
   const historyButton = document.getElementsByClassName("history__button");
   for (i = 0; i < historyButton.length; i++) {
     historyButton[i].onclick = function(e) {
