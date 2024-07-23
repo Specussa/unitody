@@ -1317,6 +1317,7 @@ html.has-scroll-dragging {
   padding: 15px 30px 15px 0;
   align-items: center;
   justify-content: flex-end;
+  color: var(--text);
 }
 
 .header__nav_link_svg svg {

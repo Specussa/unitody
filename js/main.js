@@ -231,11 +231,6 @@ burger.addEventListener('click', function() {
     header.classList.remove("active");
     headerClose.classList.remove("active");
     document.documentElement.classList.remove("noscroll");
-    // for (var i = 0; i < menuItemActive.length; i++) {
-    //   menuItemActive[i].children[1].style.maxHeight = null;
-    //   menuItemActive[i].children[1].classList.remove("active");
-    //   menuItemActive[i].classList.remove("active");
-    // }
     scroll.start();
   } else {
     overlay.classList.add("active");
@@ -244,11 +239,6 @@ burger.addEventListener('click', function() {
     header.classList.add("active");
     headerClose.classList.add("active");
     document.documentElement.classList.add("noscroll");
-    // for (var i = 0; i < menuItemActive.length; i++) {
-    //   menuItemActive[i].children[1].style.maxHeight = null;
-    //   menuItemActive[i].children[1].classList.remove("active");
-    //   menuItemActive[i].classList.remove("active");
-    // }
     header.classList.remove("hidden");
     scroll.stop();
   }
@@ -268,22 +258,39 @@ const headerNavRightActive = document.querySelectorAll(".header .header__nav_rig
 if(headerPopup){
   const headerNavLink = document.querySelectorAll('.header__nav_link');
   const headerNavigation = document.querySelectorAll('.header__navigation');
-  headerNavLink.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      if(item.nextElementSibling && !item.nextElementSibling.classList.contains("active")) {
-        headerPopupActive.forEach((n) => n.classList.remove("active"));
-        headerNavLinkActive.forEach((n) => n.classList.remove("active"));
-        headerNavLeftActive.forEach((n) => n.classList.remove("active"));
-        headerNavRightActive.forEach((n) => n.classList.remove("active"));
-        headerSublinkActive.forEach((n) => n.classList.remove("active"));
-        headerSubNavActive.forEach((n) => n.classList.remove("active"));
-        headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
-        item.classList.add("active");
-        item.nextElementSibling.classList.add("active");
-        overlay.classList.add("active");
-        document.documentElement.classList.add("noscroll");
-        scroll.stop();
-      } else if (!item.nextElementSibling) {
+  if (window.innerWidth > 1280) {
+    headerNavLink.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        let index = item.parentElement ? [...item.parentElement.parentNode.children].indexOf(item.parentElement) : -1;
+        if(item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].children[0] && !item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].classList.contains("active")) {
+          headerPopupActive.forEach((n) => n.classList.remove("active"));
+          headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+          headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+          headerNavRightActive.forEach((n) => n.classList.remove("active"));
+          headerSublinkActive.forEach((n) => n.classList.remove("active"));
+          headerSubNavActive.forEach((n) => n.classList.remove("active"));
+          headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+          item.classList.add("active");
+          item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].classList.add("active");
+          overlay.classList.add("active");
+          document.documentElement.classList.add("noscroll");
+          scroll.stop();
+        } else if (!item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].children[0]) {
+          headerPopupActive.forEach((n) => n.classList.remove("active"));
+          headerNavLinkActive.forEach((n) => n.classList.remove("active"));
+          headerNavLeftActive.forEach((n) => n.classList.remove("active"));
+          headerNavRightActive.forEach((n) => n.classList.remove("active"));
+          headerSublinkActive.forEach((n) => n.classList.remove("active"));
+          headerSubNavActive.forEach((n) => n.classList.remove("active"));
+          headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+          overlay.classList.remove("active");
+          document.documentElement.classList.remove("noscroll");
+          scroll.start();
+        }
+      })
+    })
+    headerNavigation.forEach(item => {
+      item.addEventListener('mouseleave', () => {
         headerPopupActive.forEach((n) => n.classList.remove("active"));
         headerNavLinkActive.forEach((n) => n.classList.remove("active"));
         headerNavLeftActive.forEach((n) => n.classList.remove("active"));
@@ -294,41 +301,27 @@ if(headerPopup){
         overlay.classList.remove("active");
         document.documentElement.classList.remove("noscroll");
         scroll.start();
-      }
+      });
     })
-  })
-  headerNavigation.forEach(item => {
-    item.addEventListener('mouseleave', () => {
-      headerPopupActive.forEach((n) => n.classList.remove("active"));
-      headerNavLinkActive.forEach((n) => n.classList.remove("active"));
-      headerNavLeftActive.forEach((n) => n.classList.remove("active"));
-      headerNavRightActive.forEach((n) => n.classList.remove("active"));
-      headerSublinkActive.forEach((n) => n.classList.remove("active"));
-      headerSubNavActive.forEach((n) => n.classList.remove("active"));
-      headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
-      overlay.classList.remove("active");
-      document.documentElement.classList.remove("noscroll");
-      scroll.start();
-    });
-  })
-
-  const headerSubLink = document.querySelectorAll('.header__sublink');
-  headerSubLink.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      let index = item.parentElement ? [...item.parentElement.parentNode.children].indexOf(item.parentElement) : -1;
-      if(!item.parentElement.classList.contains("active") && item.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index]) {
-        headerSubNavActive.forEach((n) => n.classList.remove("active"));
-        headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
-        headerSublinkActive.forEach((n) => n.classList.remove("active"));
-        item.classList.add("active");
-        item.parentElement.classList.add("active");
-        item.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index].classList.add("active");
-        overlay.classList.add("active");
-        document.documentElement.classList.add("noscroll");
-        scroll.stop();
-      }
+  
+    const headerSubLink = document.querySelectorAll('.header__sublink');
+    headerSubLink.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        let index = item.parentElement ? [...item.parentElement.parentNode.children].indexOf(item.parentElement) : -1;
+        if(!item.parentElement.classList.contains("active") && item.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index]) {
+          headerSubNavActive.forEach((n) => n.classList.remove("active"));
+          headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+          headerSublinkActive.forEach((n) => n.classList.remove("active"));
+          item.classList.add("active");
+          item.parentElement.classList.add("active");
+          item.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index].classList.add("active");
+          overlay.classList.add("active");
+          document.documentElement.classList.add("noscroll");
+          scroll.stop();
+        }
+      })
     })
-  })
+  }
 
   headerNavClose.addEventListener('click', function() {
     headerPopupActive.forEach((n) => n.classList.remove("active"));
@@ -377,14 +370,15 @@ if(headerPopup){
   const hnlSvg = document.getElementsByClassName("header__nav_link_svg");
   for (i = 0; i < hnlSvg.length; i++) {
     hnlSvg[i].onclick = function(e) {
-      if (this.parentElement.nextElementSibling) {
+      let index = this.parentElement.parentElement ? [...this.parentElement.parentElement.parentNode.children].indexOf(this.parentElement.parentElement) : -1;
+      if(this.parentElement.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].children[0].children[1].children[0]) {
         e.preventDefault();
         headerSubNavActive.forEach((n) => n.classList.remove("active"));
         headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
         headerSublinkActive.forEach((n) => n.classList.remove("active"));
         this.parentElement.classList.add("active");
-        this.parentElement.nextElementSibling.classList.add("active");
-        this.parentElement.nextElementSibling.children[0].children[1].children[0].classList.add("active");
+        this.parentElement.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].classList.add("active");
+        this.parentElement.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].children[0].children[1].children[0].classList.add("active");
         overlay.classList.add("active");
         document.documentElement.classList.add("noscroll");
         scroll.stop();
