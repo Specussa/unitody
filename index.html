@@ -1515,6 +1515,128 @@
         </div>
       </div>
     </section>
+    <section class="globes" data-scroll-section>
+      <div class="container globes__container">
+        <div class="border"><span></span></div>
+        <div class="globes__block">
+          <div class="globes__left">
+            <div class="globes__info">
+              <p class="globes__name sub_one text_color">Наша география</p>
+              <h2 class="globes__head">Мы работаем во многих странах мира</h2>
+              <p class="globes__desc body_two">
+                Lorem ipsum dolor sit amet consectetur. Blandit cras 
+                lorem lectus vitae tincidunt amet. Id orci tincidunt 
+                ac quam diam pretium. Tempus etiam feugiat turpis leo 
+                tempus consectetur pellentesque etiam. Tristique sodales 
+                faucibus penatibus quisque et.
+              </p>
+            </div>
+            <ul class="globes__list">
+              <li class="globes__item">
+                <h4 class="globes__heading">20 лет опыта работы</h4>
+                <p class="globes__ldescription body_small">
+                  Компания успешно работает начиная с 2002 года, и за это время 
+                  сумела зарекомендовать себя, как надёжный партнёр в сфере 
+                  банковских решений.
+                </p>
+              </li>
+              <li class="globes__item">
+                <h4 class="globes__heading">250+ сотрудников</h4>
+                <p class="globes__ldescription body_small">
+                  Lorem ipsum dolor sit amet consectetur. Blandit cras 
+                  lorem lectus vitae tincidunt amet. Id orci tincidunt 
+                  ac quam diam pretium. 
+                </p>
+              </li>
+              <li class="globes__item">
+                <h4 class="globes__heading">20+ стран с рынком сбыта</h4>
+                <p class="globes__ldescription body_small">
+                  Lorem ipsum dolor sit amet consectetur. Blandit cras 
+                  lorem lectus vitae tincidunt amet. Id orci tincidunt 
+                  ac quam diam pretium. 
+                </p>
+              </li>
+              <li class="globes__item">
+                <h4 class="globes__heading">100K пользователей</h4>
+                <p class="globes__ldescription body_small">
+                  Lorem ipsum dolor sit amet consectetur. Blandit cras 
+                  lorem lectus vitae tincidunt amet. Id orci tincidunt 
+                  ac quam diam pretium. 
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="globes__right">
+            <div class="globe">
+              <canvas class="globe__dots" id="globe__dots" width="500" height="500"></canvas>
+              <div class="globe__sphere"></div>
+              <div class="globe__shadow"></div>
+              <!-- <div class="globe__map">
+                <div class="globe__back"></div>
+                <div class="globe__front"></div>
+              </div> -->
+              <div class="globe__shadow_map"></div>
+              <div class="globe-wrapper">
+                <canvas id="globe-3d"></canvas>
+                <canvas id="globe-2d-overlay"></canvas>
+              </div>
+            </div>
+          <script type="x-shader/x-fragment" id="fragment-shader-map">
+            uniform sampler2D u_map_tex;
+        
+            varying float vOpacity;
+            varying vec2 vUv;
+        
+            void main() {
+              vec3 color = texture2D(u_map_tex, vUv).rgb;
+              color -= .2 * length(gl_PointCoord.xy - vec2(.5));
+              float dot = 1. - smoothstep(.38, .4, length(gl_PointCoord.xy - vec2(.5)));
+              if (dot < 0.5) discard;
+              gl_FragColor = vec4(255, 255, 255, vOpacity);
+            }
+          </script>
+          <script type="x-shader/x-vertex" id="vertex-shader-map">
+            uniform sampler2D u_map_tex;
+            uniform float u_dot_size;
+            uniform float u_time_since_click;
+            uniform vec3 u_pointer;
+        
+            #define PI 3.14159265359
+        
+            varying float vOpacity;
+            varying vec2 vUv;
+        
+            void main() {
+        
+                vUv = uv;
+        
+                // mask with world map
+                float visibility = step(.2, texture2D(u_map_tex, uv).r);
+                gl_PointSize = visibility * u_dot_size;
+        
+                // make back dots semi-transparent
+                vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                vOpacity = (1. / length(mvPosition.xyz) - .7);
+                vOpacity = clamp(vOpacity, .03, 1.);
+        
+                // add ripple
+                float t = u_time_since_click - .1;
+                t = max(0., t);
+                float max_amp = .15;
+                float dist = 1. - .5 * length(position - u_pointer); // 0 .. 1
+                float damping = 1. / (1. + 20. * t); // 1 .. 0
+                float delta = max_amp * damping * sin(5. * t * (1. + 2. * dist) - PI);
+                delta *= 1. - smoothstep(.8, 1., dist);
+                vec3 pos = position;
+                pos *= (1. + delta);
+        
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
+              }
+          </script>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="faq" data-scroll-section>
       <div class="container faq__container">
         <div class="border"><span></span></div>
@@ -1605,6 +1727,7 @@
     </section>
     <footer class="footer" data-scroll-section>
       <div class="container footer__container animate_top">
+        <div class="border"><span></span></div>
         <div class="footer__block">
           <div class="footer__top">
             <a href="index.html" class="footer__logo">
@@ -1664,6 +1787,8 @@
   <script src="js/scrollbar.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animate.js"></script>
+  <script src="js/globe.js"></script>
+  <script src="js/globes.js" type="module"></script>
   <script>
     window.onload = function () {
       window.setTimeout(function () {

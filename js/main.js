@@ -51,7 +51,7 @@ if (!document.querySelector('.has-scroll-smooth')) {
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
     let windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     let documentHeight = Math.max(
-      window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || document.querySelector('.main').clientHeight
+      window.innerHeight, document.documentElement.clientHeight, document.body.clientHeight, document.querySelector('.main').clientHeight
     );
     let scrollpage = Math.round((scrollTop / (document.querySelector('.main').clientHeight - windowHeight)) * 100);
     headerprogress.style.flexBasis = scrollpage + '%';
