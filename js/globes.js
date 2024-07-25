@@ -26,7 +26,7 @@ function initScene() {
   clock = new THREE.Clock();
 
   new THREE.TextureLoader().load(
-  "../img/globe/map.png",
+  "img/globe/map.png",
   (mapTex) => {
     createGlobe(mapTex);
     addCanvasEvents();
