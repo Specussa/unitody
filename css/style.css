@@ -3453,7 +3453,6 @@ html.has-scroll-dragging {
 
 .form__checkbox_text a {
   display: inline;
-  text-decoration: underline;
   color: var(--color);
 }
 
