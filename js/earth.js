@@ -1,5 +1,5 @@
 
-const d=220, R=160, roAtmDeg=-52, T_earth='../img/globe/map.png',
+const d=220, R=160, roAtmDeg=-52, T_earth='./img/globe/map.png',
 		obliquity=23/180*3.14, roV1=.00025, roV2=0.0005, posZ=1700,
 		canvasId='#earth', color='#fff', fogC='#000';
 
@@ -26,7 +26,7 @@ BufferAttribute,
 Fog,
 CurvePath,
 CubicBezierCurve3,
-Raycaster } from "../js/three.min.js"
+Raycaster } from "./three.min.js"
 
 	Object.assign(Math, math);
 	var positions=[], particles, particle, count = 0, dpr, lastW,
