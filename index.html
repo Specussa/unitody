@@ -1517,7 +1517,11 @@
     </section>
     <section class="globes" data-scroll-section>
       <div class="container globes__container">
-        <div class="border"><span></span></div>
+        <div class="globes__back">
+          <span class="globes__back_line"></span>
+          <span class="globes__back_line"></span>
+          <div class="border"><span></span></div>
+        </div>
         <div class="globes__block">
           <div class="globes__left">
             <div class="globes__info">
@@ -1534,7 +1538,7 @@
             <ul class="globes__list">
               <li class="globes__item">
                 <h4 class="globes__heading">20 лет опыта работы</h4>
-                <p class="globes__ldescription body_small">
+                <p class="globes__description body_small">
                   Компания успешно работает начиная с 2002 года, и за это время 
                   сумела зарекомендовать себя, как надёжный партнёр в сфере 
                   банковских решений.
@@ -1542,7 +1546,7 @@
               </li>
               <li class="globes__item">
                 <h4 class="globes__heading">250+ сотрудников</h4>
-                <p class="globes__ldescription body_small">
+                <p class="globes__description body_small">
                   Lorem ipsum dolor sit amet consectetur. Blandit cras 
                   lorem lectus vitae tincidunt amet. Id orci tincidunt 
                   ac quam diam pretium. 
@@ -1550,7 +1554,7 @@
               </li>
               <li class="globes__item">
                 <h4 class="globes__heading">20+ стран с рынком сбыта</h4>
-                <p class="globes__ldescription body_small">
+                <p class="globes__description body_small">
                   Lorem ipsum dolor sit amet consectetur. Blandit cras 
                   lorem lectus vitae tincidunt amet. Id orci tincidunt 
                   ac quam diam pretium. 
@@ -1558,7 +1562,7 @@
               </li>
               <li class="globes__item">
                 <h4 class="globes__heading">100K пользователей</h4>
-                <p class="globes__ldescription body_small">
+                <p class="globes__description body_small">
                   Lorem ipsum dolor sit amet consectetur. Blandit cras 
                   lorem lectus vitae tincidunt amet. Id orci tincidunt 
                   ac quam diam pretium. 
@@ -1568,11 +1572,8 @@
           </div>
           <div class="globes__right">
             <div class="globe">
-              <div class="globe__shadow"></div>
-              <div class="globe__shadow_map"></div>
               <canvas id="earth" class="globe__earth" width="1000" height="1000"></canvas>
             </div>
-            <script src="js/earth.js" type="module"></script>
           </div>
         </div>
       </div>
@@ -1666,7 +1667,7 @@
       </div>
     </section>
     <footer class="footer" data-scroll-section>
-      <div class="container footer__container animate_top">
+      <div class="container footer__container">
         <div class="border"><span></span></div>
         <div class="footer__block">
           <div class="footer__top">
@@ -1689,19 +1690,19 @@
             <div class="footer__wrap_link">
               <div class="footer__navigation">
                 <ul class="footer__nav_list">
-                  <li class="footer__nav_item">
+                  <li class="footer__nav_item animate_top">
                     <a href="#" class="footer__nav_link body_caption">О нас</a>
                   </li>
-                  <li class="footer__nav_item">
+                  <li class="footer__nav_item animate_top">
                     <a href="#" class="footer__nav_link body_caption">Терминалы</a>
                   </li>
-                  <li class="footer__nav_item">
+                  <li class="footer__nav_item animate_top">
                     <a href="#" class="footer__nav_link body_caption">Программное обеспечение</a>
                   </li>
-                  <li class="footer__nav_item">
+                  <li class="footer__nav_item animate_top">
                     <a href="#" class="footer__nav_link body_caption">Вакансии</a>
                   </li>
-                  <li class="footer__nav_item">
+                  <li class="footer__nav_item animate_top">
                     <a href="#" class="footer__nav_link body_caption">Контакты</a>
                   </li>
                 </ul>
@@ -1716,6 +1717,7 @@
           <div class="footer__policy">
             <p class="body_caption">© Unitodi, 2024. Все права защищены</p>
             <a class="body_caption" href="policy.html">Политика конфиденциальности</a>
+            <a class="body_caption" target="_blank" href="https://anyera.ru/">Разработано Anyera Didgital & Disign</a>
           </div>
         </div>
       </div>
@@ -1727,6 +1729,7 @@
   <script src="js/scrollbar.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animate.js"></script>
+  <script src="js/earth.js" type="module"></script>
   <script>
     window.onload = function () {
       window.setTimeout(function () {
