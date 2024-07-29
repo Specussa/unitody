@@ -4196,8 +4196,13 @@ html.has-scroll-dragging {
 .vacancies__block .terminals_icon {
   width: calc(25% - 10px);
 }
+
 .vacancies__block .terminals_icon__subtitle {
   margin: 20px 0 15px
+}
+
+.vacancies__img img {
+  width: 100%;
 }
 
 /* end vacancies */
@@ -4309,7 +4314,8 @@ html.has-scroll-dragging {
   .policy__container,
   .header__popup_container,
   .terminal_card__container,
-  .terminal_characteristic__container {
+  .terminal_characteristic__container,
+  .vacancies__container {
     padding: 0 60px;
   }
 
@@ -4532,7 +4538,8 @@ html.has-scroll-dragging {
   .policy__container,
   .header__popup_container,
   .terminal_card__container,
-  .terminal_characteristic__container {
+  .terminal_characteristic__container,
+  .vacancies__container {
     padding: 0 20px;
   }
 }
@@ -5401,7 +5408,8 @@ html.has-scroll-dragging {
   .policy__container,
   .header__popup_container,
   .terminal_card__container, 
-  .terminal_characteristic__container {
+  .terminal_characteristic__container,
+  .vacancies__container {
     padding: 0 10px;
   }
 
