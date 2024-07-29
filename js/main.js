@@ -778,7 +778,6 @@ const terminalsinformationFour = document.querySelector('.terminals__information
 const terminalsinformationFive = document.querySelector('.terminals__information_five');
 
 if (terminalsButtonOne && terminalsButtonTwo && terminalsButtonThree) {
-  console.log('kkk')
   terminalsButtonOne.addEventListener('click', function() {
     
     if (!terminalsButtonOne.classList.contains("active")) {
