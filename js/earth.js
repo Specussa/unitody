@@ -1,7 +1,6 @@
 
 const d=220, R=160, roAtmDeg=-52, T_earth='../img/globe/map.png',
 		obliquity=23/180*3.14, roV1=.00025, roV2=0.0005, posZ=1700,
-		// canvasId='#earth', color='#0084ff', fogC='#722779';
 		canvasId='#earth', color='#fff', fogC='#000';
 
 import {Vector2,
