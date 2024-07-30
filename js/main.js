@@ -258,9 +258,9 @@ const headerNavRightActive = document.querySelectorAll(".header .header__nav_rig
 if(headerPopup){
   const headerNavLink = document.querySelectorAll('.header__nav_link');
   const headerNavigation = document.querySelectorAll('.header__navigation');
-  if (window.innerWidth > 1280) {
-    headerNavLink.forEach(item => {
-      item.addEventListener('mouseover', () => {
+  headerNavLink.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      if (window.innerWidth > 1280) {
         let index = item.parentElement ? [...item.parentElement.parentNode.children].indexOf(item.parentElement) : -1;
         if(item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].children[0] && !item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].classList.contains("active")) {
           headerPopupActive.forEach((n) => n.classList.remove("active"));
@@ -272,6 +272,8 @@ if(headerPopup){
           headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
           item.classList.add("active");
           item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].classList.add("active");
+          item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].children[0].children[1].children[0].children[1].children[0].children[0].classList.add("active");
+          item.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[index].children[0].children[1].children[1].children[1].children[0].children[0].classList.add("active");
           overlay.classList.add("active");
           document.documentElement.classList.add("noscroll");
           scroll.stop();
@@ -287,10 +289,12 @@ if(headerPopup){
           document.documentElement.classList.remove("noscroll");
           scroll.start();
         }
-      })
+      }
     })
-    headerNavigation.forEach(item => {
-      item.addEventListener('mouseleave', () => {
+  })
+  headerNavigation.forEach(item => {
+    item.addEventListener('mouseleave', () => {
+      if (window.innerWidth > 1280) {
         headerPopupActive.forEach((n) => n.classList.remove("active"));
         headerNavLinkActive.forEach((n) => n.classList.remove("active"));
         headerNavLeftActive.forEach((n) => n.classList.remove("active"));
@@ -301,12 +305,14 @@ if(headerPopup){
         overlay.classList.remove("active");
         document.documentElement.classList.remove("noscroll");
         scroll.start();
-      });
-    })
-  
-    const headerSubLink = document.querySelectorAll('.header__sublink');
-    headerSubLink.forEach(item => {
-      item.addEventListener('mouseover', () => {
+      }
+    });
+  })
+
+  const headerSubLink = document.querySelectorAll('.header__sublink');
+  headerSubLink.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      if (window.innerWidth > 1280) {
         let index = item.parentElement ? [...item.parentElement.parentNode.children].indexOf(item.parentElement) : -1;
         if(!item.parentElement.classList.contains("active") && item.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index]) {
           headerSubNavActive.forEach((n) => n.classList.remove("active"));
@@ -319,9 +325,9 @@ if(headerPopup){
           document.documentElement.classList.add("noscroll");
           scroll.stop();
         }
-      })
+      }
     })
-  }
+  })
 
   headerNavClose.addEventListener('click', function() {
     headerPopupActive.forEach((n) => n.classList.remove("active"));

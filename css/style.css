@@ -564,7 +564,7 @@ small {
 }
 
 .btn.btn__secondary .btn__arrow::after {
-  background-color: var(--color);
+  background-color: var(--text);
 }
 
 .btn.btn__link .btn__arrow::after {
