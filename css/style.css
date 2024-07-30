@@ -494,11 +494,6 @@ small {
   left: 0;
   -webkit-transform: translateY(102%);
   transform: translateY(102%);
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
-  transition-property: transform;
-  transition-property: transform,-webkit-transform;
-  will-change: transform;
 }
 
 .button__hover:after {
@@ -688,18 +683,19 @@ small {
 /* start cursor */
 
 html.has-scroll-smooth {
+  height: 100vh;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  overflow: hidden;
   scroll-behavior: auto;
+  overflow: hidden;
 }
 
 html.has-scroll-dragging {
   -webkit-user-select: none;
-  user-select: none
+  user-select: none;
 }
 
 .has-scroll-smooth body {
@@ -4632,7 +4628,7 @@ html.has-scroll-dragging {
   .header__nav_left,
   .header__nav_right {
     width: 100%;
-    height: var(--height);
+    height: 100vh;
     position: fixed;
     top: 0;
     background-color: var(--bg);
