@@ -1,7 +1,7 @@
 
 const d=220, R=160, roAtmDeg=-52, T_earth='./img/globe/map.png',
 		obliquity=23/180*3.14, roV1=.00025, roV2=0.0005, posZ=1700,
-		canvasId='#earth', color='#fff', fogC='#000';
+		canvasId='#earth', color='#fff';
 
 import {Vector2,
 Math as math, 
@@ -39,12 +39,12 @@ var vec2=(x,y)=>new Vector2(x,y),
   lookAt=vec3(), PI=Math.PI, wX=vec3(1,0,0), wY=vec3(0,1,0),
   canvas=document.querySelector(canvasId), container=document.querySelector('.globe'); 
 
-var renderer = new WebGLRenderer({alpha:true, antialias:true, canvas: canvas});//
+var renderer = new WebGLRenderer({alpha:true, antialias:true, canvas: canvas});
 var rTargets=[new WebGLRenderTarget(W,H,{depthBuffer:false, stencilBuffer:false})];
 rTargets[1]=rTargets[0].clone();
 
 var scene = new Scene(), scene2 = new Scene(), planet = new Group(),
-  camera = new PerspectiveCamera( 18, aspect, 1, 10000 );
+    camera = new PerspectiveCamera( 18, aspect, 1, 10000 );
 camera.position.z=posZ;
 camera.updateMatrixWorld();
 
@@ -233,7 +233,7 @@ function addTransaction(a,b,i){
   var tGeometry=new BufferGeometry().setFromPoints( curve.getSpacedPoints(n) );
   tGeometry.addAttribute( 'flash', new BufferAttribute( tFlashes, 1 ) );
   transactions[i]=new Points(tGeometry, Tmaterial);
-  transactions[i].timer=0;
+  transactions[i].timer=-3;
   transactions[i].n=n;
   planet.add(transactions[i]);
 }
