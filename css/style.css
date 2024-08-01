@@ -2591,12 +2591,20 @@ html.has-scroll-dragging {
   justify-content: center;
 }
 
+.hero__image_swiper {
+  height: 100%;
+}
+
 .hero__image {
   display: flex;
   width: 55%;
   height: 100%;
   max-height: 770px;
   position: relative;
+}
+
+.hero__image_circles {
+  max-height: 730px;
 }
 
 .hero__image img {
@@ -4536,7 +4544,7 @@ html.has-scroll-dragging {
 
 .globes__block {
   display: flex;
-  padding: 0 0 80px;
+  padding: 80px 0 0;
   gap: 20px;
   position: relative;
   z-index: 2;
@@ -4545,7 +4553,7 @@ html.has-scroll-dragging {
 .globes__left {
   display: flex;
   width: calc(50% - 10px);
-  padding: 380px 0 0;
+  padding: 300px 0 0;
   flex-direction: column;
   gap: 130px;
 }
@@ -4591,7 +4599,7 @@ html.has-scroll-dragging {
 .globes__right {
   display: flex;
   width: calc(50% - 10px);
-  padding: 380px 0 0;
+  padding: 300px 0 0;
 	margin: 0 0 30px;
   justify-content: flex-end;
   position: relative;
@@ -4603,7 +4611,7 @@ html.has-scroll-dragging {
   pointer-events: none;
   border-radius: 50%;
   position: absolute;
-  left: 0;
+  left: 100px;
   bottom: 0;
   background-color: var(--purple);
   background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
@@ -5473,6 +5481,15 @@ html.has-scroll-dragging {
   .hero__navigation {
     bottom: 60px;
   }
+  .hero__image_circles {
+    max-height: 585px;
+  }
+  .hero__circle {
+    width: 110px;
+    height: 110px;
+    font-size: 24px;
+    line-height: 33.6px;
+  }
 
 
   .products_top__container,
@@ -5641,11 +5658,6 @@ html.has-scroll-dragging {
     gap: 90px;
   }
 
-  .hero__circle {
-    font-size: 31.46px;
-    line-height: 44.05px;
-  }
-
   .footer__nav_list {
     height: 115px;
     column-gap: 125px;
@@ -5773,11 +5785,6 @@ html.has-scroll-dragging {
   .globes__container,
   .vacanc_info__container {
     padding: 0 20px;
-  }
-
-  .hero__circle {
-    font-size: 24px;
-    line-height: 33.6px;
   }
 }
 /* end 1439px */
@@ -6361,6 +6368,9 @@ html.has-scroll-dragging {
     align-items: baseline;
     bottom: 0;
   }
+  .hero__image_circles {
+    max-height: 400px;
+  }
 
   .about__block {
     flex-direction: column;
@@ -6656,12 +6666,12 @@ html.has-scroll-dragging {
   }
   
   .globes__block {
-    padding: 0 0 60px;
+    padding: 60px 0;
     flex-direction: column-reverse;
   }
   .globes__right {
     width: 100%;
-    height: 400px;
+    height: 340px;
     padding: 0;
   }
   .globes__left {
@@ -7194,7 +7204,7 @@ html.has-scroll-dragging {
   }
   
   .globes__block {
-    padding: 0 0 40px;
+    padding: 40px 0 0;
   }
   .globes__back_line:nth-child(1),
   .globes__back_line:nth-child(2) {

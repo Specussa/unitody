@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const showreelmodal = document.querySelector('.showreel__modal');
   const showreelmodalClose = document.querySelector('.showreel__modal_close');
   const showreelvideor = document.querySelector('.showreel__video_responsive');
-  document.querySelector('.showreel__block').innerHTML = '<video poster="../img/terminals/video/video_1.webp " playsinline autoplay muted loop><source src="../img/terminals/video/video_1.mp4" type="video/mp4"></video>';
-  showreelvideor.innerHTML = '<video id="showreel__video" poster="../img/terminals/video/video_1.webp " playsinline autoplay loop data-overlay="1" data-title="Unitodi"><source src="../img/terminals/video/video_1.mp4" type="video/mp4"></video>';
+  document.querySelector('.showreel__block').innerHTML = '<video poster="./img/terminals/video/video_1.webp " playsinline autoplay muted loop><source src="./img/terminals/video/video_1.mp4" type="video/mp4"></video>';
+  showreelvideor.innerHTML = '<video id="showreel__video" poster="./img/terminals/video/video_1.webp " playsinline autoplay loop data-overlay="1" data-title="Unitodi"><source src="./img/terminals/video/video_1.mp4" type="video/mp4"></video>';
   setTimeout(function() {
     const showreelvideo = document.getElementById('showreel__video');
     if(showreelvideo){
