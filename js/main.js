@@ -7,7 +7,9 @@ const appHeight = () => {
   var newWidth = window.innerWidth;
   if (newWidth != oldWidth) {
     docheight.style.setProperty('--height', `${window.innerHeight}px`);
-    document.querySelector('.history__rotate').style.height = document.querySelector('.history__rotate').clientWidth + 'px';
+    if (document.querySelector('.history__rotate')) {
+      document.querySelector('.history__rotate').style.height = document.querySelector('.history__rotate').clientWidth + 'px';
+    }
   }
   oldWidth = window.innerWidth;
 }
@@ -85,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = document.querySelectorAll('button');
   const label = document.querySelectorAll('label');
   const hslanguageicon = document.querySelectorAll('.header__set_language_icon');
+  const sinview = document.querySelectorAll('.showreel__button');
+  const cursorgrab = document.querySelectorAll('.c-scrollbar_thumb');
   const buttonnext = document.querySelectorAll('.swiper-button-next');
   const buttonprev = document.querySelectorAll('.swiper-button-prev');
   const sliders = document.querySelectorAll(".swiper-wrapper");
@@ -123,23 +127,46 @@ document.addEventListener("DOMContentLoaded", () => {
     cursor.classList.remove('active')
   });
   
-  if (!document.querySelector(".price__swiper")) {
-    sliders.forEach(item => {
-      item.onmouseenter = () => {
-        cursor.classList.add("cursor__slider");
-      };
-      item.onmouseleave = () => {
-        cursor.classList.remove("cursor__slider");
-        cursorBlock.classList.remove("active");
-      };
-      item.onpointerdown = () => {
-        cursorBlock.classList.add("active");
-      }
-      item.onpointerup = () => {
-        cursorBlock.classList.remove("active");
-      };
-    })
-  }
+  sinview.forEach(item => {
+    item.onmouseenter = () => {
+      cursor.classList.add("cursor__showreel");
+    };
+    item.onmouseleave = () => {
+      cursor.classList.remove("cursor__showreel");
+      cursorBlock.classList.remove("active");
+    };
+    item.onpointerdown = () => {
+      cursorBlock.classList.add("active");
+    };
+    item.onpointerup = () => {
+      cursorBlock.classList.remove("active");
+    };
+  });
+
+  cursorgrab.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      cursor.classList.add('hover');
+    });
+    item.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+    });
+  });
+  
+  sliders.forEach(item => {
+    item.onmouseenter = () => {
+      cursor.classList.add("cursor__slider");
+    };
+    item.onmouseleave = () => {
+      cursor.classList.remove("cursor__slider");
+      cursorBlock.classList.remove("active");
+    };
+    item.onpointerdown = () => {
+      cursorBlock.classList.add("active");
+    };
+    item.onpointerup = () => {
+      cursorBlock.classList.remove("active");
+    };
+  });
 
   a.forEach(item => {
     item.addEventListener('mouseover', () => {
@@ -342,6 +369,7 @@ if(headerPopup){
     burger.classList.remove("active");
     header.classList.remove("active");
     headerClose.classList.remove("active");
+    document.documentElement.classList.remove("noscroll");
     scroll.start();
   })
 
@@ -430,6 +458,7 @@ headerClose.addEventListener('click', function() {
   burger.classList.remove("active");
   header.classList.remove("active");
   headerClose.classList.remove("active");
+  document.documentElement.classList.remove("noscroll");
   scroll.start();
 })
 overlay.addEventListener('click', function() {
@@ -443,14 +472,15 @@ overlay.addEventListener('click', function() {
   burger.classList.remove("active");
   header.classList.remove("active");
   headerClose.classList.remove("active");
+  document.documentElement.classList.remove("noscroll");
   scroll.start();
 })
 // end overlay
 
-// start hero___swiper
-const heroSlider = document.querySelector('.hero___swiper');
+// start hero__swiper
+const heroSlider = document.querySelector('.hero__swiper');
 if(heroSlider){
-  var heroSwiper = new Swiper('.hero___swiper', {
+  var heroSwiper = new Swiper('.hero__swiper', {
     loop: true,
     effect: "fade",
     slidesPerView: 1,
@@ -488,16 +518,90 @@ if(heroSlider){
       }
     }
   });
-  if(document.querySelector('.hero___wrapper').children.length >= 10) {
+  if(document.querySelector('.hero__wrapper').children.length >= 10) {
     var herototalzero = '';
   } else {
     var herototalzero = '0';
   }
   if(document.querySelector('.hero__total')) {
-  document.querySelector('.hero__total').innerHTML = herototalzero + document.querySelector('.hero___wrapper').children.length;
+    document.querySelector('.hero__total').innerHTML = herototalzero + document.querySelector('.hero__wrapper').children.length;
   }
 }
-// end hero___swiper
+// end hero__swiper
+
+// start hero__image_swiper
+const heroImageSlider = document.querySelector('.hero__image_swiper');
+const heroCirclesActive = document.querySelectorAll(".hero__circles .hero__circles_mouse");
+if(heroImageSlider){
+  var heroImageSwiper = new Swiper('.hero__image_swiper', {
+    loop: true,
+    effect: "fade",
+    slidesPerView: 1,
+    loopedSlides: 1,
+    spaceBetween: 20,
+    a11y: false,
+    speed: 300,
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: false
+    // },
+    pagination: {
+      el: '.hero__pagination',
+      type: 'bullets',
+      renderBullet: function (index, className) {
+        if((index + 1) >= 10) {
+          var herocountzero = '';
+        } else {
+          var herocountzero = '0';
+        }
+        return '<span class="' + className + '">' + '<span class="count">' + herocountzero + (index + 1) + "</span>" + "</span>";
+      },
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".hero__next",
+      prevEl: ".hero__prev"
+    },
+    on: {
+      slideChange: function (swiper) {
+        const count = document.querySelector('.hero__pagination .swiper-pagination-bullet-active .count');
+        if (count) {
+          const herocount = document.querySelector('.hero__count');
+          herocount.innerHTML = count.innerHTML;
+        }
+
+        let index = document.querySelector('.hero__pagination .swiper-pagination-bullet-active').getAttribute('index');
+        heroCirclesActive.forEach((n) => n.classList.remove("active"));
+        document.querySelector(".hero__circles").children[index].classList.add("active");
+      }
+    }
+  });
+  if(document.querySelector('.hero__image_wrapper').children.length >= 10) {
+    var herototalzero = '';
+  } else {
+    var herototalzero = '0';
+  }
+  if(document.querySelector('.hero__total')) {
+    document.querySelector('.hero__total').innerHTML = herototalzero + document.querySelector('.hero__image_wrapper').children.length;
+  }
+
+  const heroCircles = document.querySelectorAll('.hero__circles');
+  [...heroCircles].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){
+    elem.setAttribute("index", index);
+  }});
+
+  const heroPagination = document.querySelectorAll('.hero__pagination');
+  [...heroPagination].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){
+    elem.setAttribute("index", index);
+  }});
+  const heroCirclesButton = document.getElementsByClassName("hero__circles_mouse");
+  for (i = 0; i < heroCirclesButton.length; i++) {
+    heroCirclesButton[i].onclick = function(e) {
+      heroImageSwiper.slideToLoop(this.getAttribute('index'), 0);
+    }
+  }
+}
+// end hero__image_swiper
 
 // start products_slider
 if (document.querySelector(".products_slider__swiper")) {
@@ -543,14 +647,13 @@ if (document.querySelector(".products_slider__swiper")) {
       }
     });
     
-  if(n.querySelector('.products_slider__list').children.length >= 10) {
-    var productscountzero  = '';
-  } else {
-    var productscountzero  = '0';
-  }
-  n.querySelector('.products__total').innerHTML = productscountzero  + n.querySelector('.products_slider__list').children.length;
+    if(n.querySelector('.products_slider__list').children.length >= 10) {
+      var productscountzero  = '';
+    } else {
+      var productscountzero  = '0';
+    }
+    n.querySelector('.products__total').innerHTML = productscountzero  + n.querySelector('.products_slider__list').children.length;
   });
-  
 }
 // end products_slider
 
@@ -767,67 +870,147 @@ if (canwedoButtonOne && canwedoButtonTwo && canwedoButtonThree) {
 }
 // end canwedo__information
 
-// start terminals__information
-const terminalsButton = document.querySelector('.terminals__button');
-const terminalsButtonActive = document.querySelectorAll(".terminals__buttons .terminals__button");
-const terminalsButtonOne = document.querySelector('.terminals__button_one');
-const terminalsButtonTwo = document.querySelector('.terminals__button_two');
-const terminalsButtonThree = document.querySelector('.terminals__button_three');
-const terminalsButtonFour = document.querySelector('.terminals__button_four');
-const terminalsButtonFive = document.querySelector('.terminals__button_five');
-
-const terminalsinformationActive = document.querySelectorAll(".terminals__informations .terminals__information");
-const terminalsinformationOne = document.querySelector('.terminals__information_one');
-const terminalsinformationTwo = document.querySelector('.terminals__information_two');
-const terminalsinformationThree = document.querySelector('.terminals__information_three');
-const terminalsinformationFour = document.querySelector('.terminals__information_four');
-const terminalsinformationFive = document.querySelector('.terminals__information_five');
-
-if (terminalsButtonOne && terminalsButtonTwo && terminalsButtonThree) {
-  terminalsButtonOne.addEventListener('click', function() {
+// start hero__circle
+if (document.querySelector('.hero__circle')) {
+  const herocircle = document.querySelectorAll('.hero__circle');
+  const herocircles = [];
+  
+  const Mode = Object.freeze({
+    Idle: 1 << 0,
+    Move: 1 << 1,
+    Return: 1 << 2
+  });
+  
+  const update = () => {
+    for (const item of herocircles) {
+      if (item.mode !== Mode.Idle) {
+        item.position.x += item.velocity.x;
+        item.position.y += item.velocity.y;
+  
+        item.entity.style.setProperty('transform', `translate(${item.position.x}px, ${item.position.y}px)`);
+  
+        if (item.position.x !== 0 || item.position.y !== 0) {
+          if (item.mode === Mode.Move) {
+            item.velocity.x *= 0.96;
+            item.velocity.y *= 0.96;
+  
+            if (Math.abs(item.velocity.x) < 0.1 && Math.abs(item.velocity.y) < 0.1) {
+              [item.mouse.current.x, item.mouse.current.y] = [null, null];
+              [item.mouse.previous.x, item.mouse.previous.y] = [null, null];
+  
+              item.mode = Mode.Return;
+            }
+          } else {
+            [item.velocity.x, item.velocity.y] = [item.position.x / -10, item.position.y / -10];
+  
+            if (Math.abs(item.velocity.x) < 0.1 && Math.abs(item.velocity.y) < 0.1) {
+              [item.position.x, item.position.y] = [0, 0];
+              [item.velocity.x, item.velocity.y] = [0, 0];
+            }
+          }
+        } else {
+          item.mode = Mode.Idle;
+        }
+      }
+    }
     
-    if (!terminalsButtonOne.classList.contains("active")) {
-      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationOne.classList.add("active");
-      terminalsButtonOne.classList.add("active");
-    }
-  })
+    requestAnimationFrame(update);
+  };
   
-  terminalsButtonTwo.addEventListener('click', function() {
-    if (!terminalsButtonTwo.classList.contains("active")) {
-      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationTwo.classList.add("active");
-      terminalsButtonTwo.classList.add("active");
-    }
-  })
+  const init = () => {
+    for (const box of herocircle) {
+      const item = {
+        entity: box,
+        position: {
+          x: 0,
+          y: 0
+        },
+        velocity: {
+          x: 0,
+          y: 0
+        },
+        mouse: {
+          current: {
+            x: null,
+            y: null
+          },
+          previous: {
+            x: null,
+            y: null
+          }
+        },
+        mode: Mode.Idle
+      };
   
-  terminalsButtonThree.addEventListener('click', function() {
-    if (!terminalsButtonThree.classList.contains("active")) {
-      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationThree.classList.add("active");
-      terminalsButtonThree.classList.add("active");
-    }
-  })
+      box.addEventListener('mousemove', event => {
+        [item.mouse.current.x, item.mouse.current.y] = [event.offsetX, event.offsetY];
   
-  terminalsButtonFour.addEventListener('click', function() {
-    if (!terminalsButtonFour.classList.contains("active")) {
-      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationFour.classList.add("active");
-      terminalsButtonFour.classList.add("active");
+        if (item.mouse.previous.x !== null && item.mouse.previous.y !== null) {
+          item.velocity.x += (item.mouse.current.x - item.mouse.previous.x) / 50;
+          item.velocity.y += (item.mouse.current.y - item.mouse.previous.y) / 50;
+        }
+        
+        [item.mouse.previous.x, item.mouse.previous.y] = [item.mouse.current.x, item.mouse.current.y];
+        
+        item.mode = Mode.Move;
+      });
+      
+      box.addEventListener('mouseleave', event => {
+        [item.mouse.current.x, item.mouse.current.y] = [null, null];
+        [item.mouse.previous.x, item.mouse.previous.y] = [null, null];
+      });
+      
+      herocircles.push(item);
     }
-  })
-
-  terminalsButtonFive.addEventListener('click', function() {
-    if (!terminalsButtonFive.classList.contains("active")) {
-      terminalsButtonActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationActive.forEach((n) => n.classList.remove("active"));
-      terminalsinformationFour.classList.add("active");
-      terminalsButtonFive.classList.add("active");
+    
+    requestAnimationFrame(update);
+  };
+  
+  window.addEventListener('DOMContentLoaded', init);
+  
+  const herocirclesMouse = document.querySelector(".hero__circles");
+  window.addEventListener('mousemove', function(e) {
+    if (window.innerWidth > 1280) {
+      let x = e.clientX / window.innerWidth;
+      let y = e.clientY / window.innerHeight;
+      if(herocirclesMouse.children[0]){herocirclesMouse.children[0].style.transform = 'translate(-' + x * 5 + 'px, -' + y * 10 + 'px)'};
+      if(herocirclesMouse.children[1]){herocirclesMouse.children[1].style.transform = 'translate(-' + x * 15 + 'px, -' + y * 7 + 'px)'};
+      if(herocirclesMouse.children[2]){herocirclesMouse.children[2].style.transform = 'translate(-' + x * 3 + 'px, -' + y * 12 + 'px)'};
+      if(herocirclesMouse.children[3]){herocirclesMouse.children[3].style.transform = 'translate(-' + x * 17 + 'px, -' + y * 8 + 'px)'};
+      if(herocirclesMouse.children[4]){herocirclesMouse.children[4].style.transform = 'translate(-' + x * 14 + 'px, -' + y * 4 + 'px)'};
     }
-  })
+  });
 }
-// end terminals__information
+// end hero__circle
+
+// start vacancies
+if(document.querySelector('.vacanc_info__item')) {
+  var vacanciesitem = document.getElementsByClassName("vacanc_info__item");
+  var i;
+  
+  for (i = 0; i < vacanciesitem.length; i++) {
+    vacanciesitem[i].onclick = function(e) {
+      var vacanciesitemNext = this.children[1];
+      var vacanciesitembottom = document.getElementsByClassName("vacanc_info__item_descr");
+      var vacanciesitemActive = document.getElementsByClassName("vacanc_info__item active");
+      console.log('ccc')
+      if (vacanciesitemNext.style.maxHeight) {
+        vacanciesitemNext.style.maxHeight = null;
+        this.classList.remove("active");
+      } else {
+        for (var q = 0; q < vacanciesitemActive.length; q++) {
+          vacanciesitemActive[q].classList.remove("active");
+          vacanciesitembottom[q].classList.remove("active");
+        }
+        for (var p = 0; p < vacanciesitembottom.length; p++) {
+          this.classList.remove("active");
+          vacanciesitembottom[p].classList.remove("active");
+          vacanciesitembottom[p].style.maxHeight = null;
+        }
+        vacanciesitemNext.style.maxHeight = vacanciesitemNext.scrollHeight + "px";
+        this.classList.add("active");
+      }
+    };
+  }
+}
+// end vacancies
