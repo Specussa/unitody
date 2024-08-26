@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <script>window.console = window.console || function(t) {};</script>
@@ -63,7 +64,7 @@
             <nav class="header__nav">
               <ul class="header__nav_list">
                 <li class="header__nav_item">
-                  <a href="#" class="header__nav_link body_small"><span>О нас</span></a>
+                  <a href="aboutus.html" class="header__nav_link body_small"><span>О нас</span></a>
                 </li>
                 <li class="header__nav_item">
                   <a href="terminals.html" class="header__nav_link body_small">
@@ -268,7 +269,7 @@
                     <div class="header__nav_scroll">
                       <div class="header__nav_scroll_flex">
                         <div class="header__subsubnav">
-                          <a href="#" class="header__subsublink body_caption">
+                          <a href="softwareCard.html" class="header__subsublink body_caption">
                             <span>Unitodi pay app</span>
                           </a>
                           <a href="#" class="header__subsublink body_caption">
@@ -334,7 +335,7 @@
         </ul>
       </div>
     </section>
-    <section class="hero" data-scroll-section>
+    <section class="hero hero__terminal hero__terminalCard" data-scroll-section>
       <div class="hero__back">
         <span class="hero__back_line"></span>
         <span class="hero__back_line"></span>
@@ -489,17 +490,32 @@
               </li>
             </ul>
           </div>
-          <div class="terminal_card__img animate_image">
-            <img src="./img/terminals/video/video_1.webp" alt=""/>
-            <div class="terminals_pause">
-              <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M56 28C56 43.464 43.464 56 28 56C12.536 56 0 43.464 0 28C0 12.536 12.536 0 28 0C43.464 0 56 12.536 56 28ZM24.0391 21.3985C23.8022 21.2617 23.5103 21.2617 23.2734 21.3985C23.0366 21.5352 22.8906 21.788 22.8906 22.0615V34.4385C22.8906 34.712 23.0366 34.9648 23.2734 35.1015C23.5103 35.2383 23.8022 35.2383 24.0391 35.1015L34.7578 28.913C34.9947 28.7763 35.1406 28.5235 35.1406 28.25C35.1406 27.9765 34.9947 27.7237 34.7578 27.587L24.0391 21.3985Z" fill="white"/>
-              </svg>
+          <button class="showreel__button terminal_card__video_img animate_image">
+            <div class="showreel__block terminal_card__videos">
+              <img src="img/terminals/video/video_1.webp" alt="">
+              <div class="terminals_pause">
+                <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M56 28C56 43.464 43.464 56 28 56C12.536 56 0 43.464 0 28C0 12.536 12.536 0 28 0C43.464 0 56 12.536 56 28ZM24.0391 21.3985C23.8022 21.2617 23.5103 21.2617 23.2734 21.3985C23.0366 21.5352 22.8906 21.788 22.8906 22.0615V34.4385C22.8906 34.712 23.0366 34.9648 23.2734 35.1015C23.5103 35.2383 23.8022 35.2383 24.0391 35.1015L34.7578 28.913C34.9947 28.7763 35.1406 28.5235 35.1406 28.25C35.1406 27.9765 34.9947 27.7237 34.7578 27.587L24.0391 21.3985Z" fill="white"/>
+                </svg>
+              </div>
             </div>
-          </div>
+          </button>
+          <script src="js/video.js"></script>
         </div>
       </div>
     </section>
+    <div class="showreel__modal">
+      <div class="showreel__modal_inner">
+        <div class="showreel__video_responsive">
+          <img src="img/terminals/video/video_1.webp" alt="">
+        </div>
+        <button class="button__close showreel__modal_close" aria-label="Закрыть видео">
+          <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 21.3241L21.3241 1M1.42335 1L21.7475 21.3241" stroke="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
     <section class="terminal_characteristic" data-scroll-section>
       <div class="container terminal_characteristic__container">
         <div class="border"><span></span></div>
@@ -783,7 +799,7 @@
               <div class="footer__navigation">
                 <ul class="footer__nav_list">
                   <li class="footer__nav_item animate_top">
-                    <a href="#" class="footer__nav_link body_caption">О нас</a>
+                    <a href="aboutus.html" class="footer__nav_link body_caption">О нас</a>
                   </li>
                   <li class="footer__nav_item animate_top">
                     <a href="terminals.html" class="footer__nav_link body_caption">Терминалы</a>

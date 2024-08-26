@@ -84,7 +84,7 @@ for (i = 0; i < fbp.length; i++) {
 }
 // end form__button_pass
 
-// start faq form
+// start faq form and sending_popup
 const faqform = document.getElementById('faq__form');
 
 if(faqform) {
@@ -93,6 +93,8 @@ if(faqform) {
   const faqphone = document.getElementById('faq__phone');
   const faqmessage = document.getElementById('faq__message');
   const faqcheckbox = document.getElementById('faq__checkbox');
+  const sendingpopup = document.querySelector('.sending_popup');
+  const sendingpopupOverlay = document.querySelector('.sending_popup__overlay');
   const faqnameMin = faqname.getAttribute('minl');
   const faqnameMax = faqname.getAttribute('maxl');
   const faqemailMin = faqemail.getAttribute('minl');
@@ -195,8 +197,40 @@ if(faqform) {
         headers: {
           "Content-type": "application/json; charset=UTF-8"
         },
-      });
+      })
+      .then(() => {
+        faqname.value = '';
+        faqemail.value = '';
+        faqphone.value = '';
+        faqmessage.value = '';
+        faqcheckbox.checked = false;
+        sendingpopup.classList.add('active');
+        sendingpopupOverlay.classList.add('active');
+        document.documentElement.classList.add("noscroll");
+        scroll.stop();
+      })
     }
   }
+  if (sendingpopup) {
+    sendingpopupOverlay.addEventListener('click', e => {
+      sendingpopup.classList.remove('active');
+      sendingpopupOverlay.classList.remove('active');
+      document.documentElement.classList.remove("noscroll");
+      scroll.start();
+    });
+    document.querySelector('.sending_popup__close').addEventListener('click', e => {
+      sendingpopup.classList.remove('active');
+      sendingpopupOverlay.classList.remove('active');
+      document.documentElement.classList.remove("noscroll");
+      scroll.start();
+    });
+    document.getElementById('btnClose').addEventListener('click', e => {
+      sendingpopup.classList.remove('active');
+      sendingpopupOverlay.classList.remove('active');
+      document.documentElement.classList.remove("noscroll");
+      scroll.start();
+    });
+  }
 }
+
 // end validate faqform

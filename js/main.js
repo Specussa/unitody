@@ -531,7 +531,7 @@ if(heroSlider){
 
 // start hero__image_swiper
 const heroImageSlider = document.querySelector('.hero__image_swiper');
-const heroCirclesActive = document.querySelectorAll(".hero__circles .hero__circles_mouse");
+const heroCirclesActive = document.querySelectorAll(".hero__circles_js .hero__circles_mouse_js");
 if(heroImageSlider){
   var heroImageSwiper = new Swiper('.hero__image_swiper', {
     loop: true,
@@ -572,7 +572,7 @@ if(heroImageSlider){
 
         let index = document.querySelector('.hero__pagination .swiper-pagination-bullet-active').getAttribute('index');
         heroCirclesActive.forEach((n) => n.classList.remove("active"));
-        document.querySelector(".hero__circles").children[index].classList.add("active");
+        document.querySelector(".hero__circles_js").children[index].classList.add("active");
       }
     }
   });
@@ -585,7 +585,7 @@ if(heroImageSlider){
     document.querySelector('.hero__total').innerHTML = herototalzero + document.querySelector('.hero__image_wrapper').children.length;
   }
 
-  const heroCircles = document.querySelectorAll('.hero__circles');
+  const heroCircles = document.querySelectorAll('.hero__circles_js');
   [...heroCircles].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){
     elem.setAttribute("index", index);
   }});
@@ -594,7 +594,7 @@ if(heroImageSlider){
   [...heroPagination].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){
     elem.setAttribute("index", index);
   }});
-  const heroCirclesButton = document.getElementsByClassName("hero__circles_mouse");
+  const heroCirclesButton = document.getElementsByClassName("hero__circles_mouse_js");
   for (i = 0; i < heroCirclesButton.length; i++) {
     heroCirclesButton[i].onclick = function(e) {
       heroImageSwiper.slideToLoop(this.getAttribute('index'), 0);
@@ -785,24 +785,14 @@ if(partnerlist){
     if (document.querySelectorAll(".partner__item").length <= 1) {
       [...document.querySelectorAll('.partner__block')].map((n, i) => {
         let l = partnerlists[i].innerHTML;
-        n.querySelector('.partner__list').innerHTML = l + l + l + l + l + l + l + l + l + l + l + l + l + l + l + l + l + l
+        n.querySelector('.partner__list').innerHTML = l + l + l + l + l + l + l + l
       })
     } else if (document.querySelectorAll(".partner__item").length <= 2) {
       [...document.querySelectorAll('.partner__block')].map((n, i) => {
         let l = partnerlists[i].innerHTML;
-        n.querySelector('.partner__list').innerHTML = l + l + l + l + l + l + l + l + l
+        n.querySelector('.partner__list').innerHTML = l + l + l + l
       })
     } else if (document.querySelectorAll(".partner__item").length <= 3) {
-      [...document.querySelectorAll('.partner__block')].map((n, i) => {
-        let l = partnerlists[i].innerHTML;
-        n.querySelector('.partner__list').innerHTML = l + l + l + l + l + l
-      })
-    } else if (document.querySelectorAll(".partner__item").length <= 6) {
-      [...document.querySelectorAll('.partner__block')].map((n, i) => {
-        let l = partnerlists[i].innerHTML;
-        n.querySelector('.partner__list').innerHTML = l + l + l + l + l + l
-      })
-    } else if (document.querySelectorAll(".partner__item").length <= 11) {
       [...document.querySelectorAll('.partner__block')].map((n, i) => {
         let l = partnerlists[i].innerHTML;
         n.querySelector('.partner__list').innerHTML = l + l + l + l
@@ -826,10 +816,10 @@ const canwedoButtonThree = document.querySelector('.canwedo__button_three');
 const canwedoButtonFour = document.querySelector('.canwedo__button_four');
 
 const canwedoinformationActive = document.querySelectorAll(".canwedo__informations .canwedo__information");
-const canwedoinformationOne = document.querySelector('.canwedo__information_one');
-const canwedoinformationTwo = document.querySelector('.canwedo__information_two');
-const canwedoinformationThree = document.querySelector('.canwedo__information_three');
-const canwedoinformationFour = document.querySelector('.canwedo__information_four');
+const canwedoinformationOne = document.querySelector('.canwedo__information_1');
+const canwedoinformationTwo = document.querySelector('.canwedo__information_2');
+const canwedoinformationThree = document.querySelector('.canwedo__information_3');
+const canwedoinformationFour = document.querySelector('.canwedo__information_4');
 
 if (canwedoButtonOne && canwedoButtonTwo && canwedoButtonThree) {
   canwedoButtonOne.addEventListener('click', function() {
@@ -871,8 +861,8 @@ if (canwedoButtonOne && canwedoButtonTwo && canwedoButtonThree) {
 // end canwedo__information
 
 // start hero__circle
-if (document.querySelector('.hero__circle')) {
-  const herocircle = document.querySelectorAll('.hero__circle');
+if (document.querySelector('.hero__circle_js')) {
+  const herocircle = document.querySelectorAll('.hero__circle_js');
   const herocircles = [];
   
   const Mode = Object.freeze({
@@ -968,7 +958,7 @@ if (document.querySelector('.hero__circle')) {
   
   window.addEventListener('DOMContentLoaded', init);
   
-  const herocirclesMouse = document.querySelector(".hero__circles");
+  const herocirclesMouse = document.querySelector(".hero__circles_js");
   window.addEventListener('mousemove', function(e) {
     if (window.innerWidth > 1280) {
       let x = e.clientX / window.innerWidth;
