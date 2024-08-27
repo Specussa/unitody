@@ -17,6 +17,25 @@ window.addEventListener('resize', appHeight);
 appHeight();
 // end height
 
+// start language
+const language = document.querySelector('#language');
+const language_wrapper = document.querySelector('.header__language');
+const languageButtons = document.querySelectorAll('#RU, #EN');
+
+if (language_wrapper) {
+  language_wrapper.addEventListener('click', function() {
+    document.querySelector('.header__language_wrapper').classList.toggle('active');
+  });
+}
+
+languageButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    language.innerText = this.id === 'RU' ? 'Ru' : 'En';
+    document.querySelector('.header__language_wrapper').classList.remove('active'); 
+  });
+});
+// end language
+
 // start scroll
 scroll = new LocomotiveScroll({el: document.querySelector('[data-scroll-container]'),smooth:true,getDirection: true,scrollFromAnywhere: true,breakpoint: 0,inertia: 1.7,mobile: {breakpoint: 0,smooth: false,inertia: 0,},tablet: {breakpoint: 0,smooth: false,inertia: 1.7,},smartphone: {breakpoint: 0,smooth: false,inertia: 1.7,}})
 // scroll = new LocomotiveScroll({el: document.querySelector('[data-scroll-container]'),smooth: true,getDirection: true,scrollFromAnywhere: true,breakpoint: 0,inertia: 0,tablet: {breakpoint: 0,smooth: false,inertia: 0,}})
@@ -1004,3 +1023,99 @@ if(document.querySelector('.vacanc_info__item')) {
   }
 }
 // end vacancies
+
+// start yandex map
+const maps = document.getElementById("map");
+if(maps) {
+  var myMap,ymaps;
+  function init() {
+    myMap = document.getElementById("map");
+    if (!myMap) return;
+    myMap = new ymaps.Map(myMap, {
+      center: [55.660607, 37.538170],
+      zoom: 14, 
+      controls: []
+      },{
+      zoomControlPosition: { right: 0, top: 0 },
+      zoomControlSize: 'auto'
+    });
+
+    if(oldWidth <= 1200){
+      myMap.behaviors.disable('drag');
+    }
+
+    const zoomInBtn = document.getElementById('zoom-in');
+    const zoomOutBtn = document.getElementById('zoom-out');
+
+    zoomInBtn.addEventListener('click', zoomIn);
+    zoomOutBtn.addEventListener('click', zoomOut);
+
+    function zoomIn() {
+      const currentZoom = myMap.getZoom();
+      myMap.setZoom(currentZoom + 1);
+    }
+  
+    function zoomOut() {
+      const currentZoom = myMap.getZoom();
+      myMap.setZoom(currentZoom - 1);
+    }
+
+    var data = {
+      'points': [{
+        "infoPoint": '<div id="mapmoscow" class="map__point{% if properties.active %} map__active{% endif %}">\
+        <span class="map__icon"><svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32.5" cy="32.5" r="32" stroke="url(#paint0_linear_1008_5331)" stroke-opacity="0.34"/><path d="M32.9991 45.7142C36.6024 42.5786 39.4506 39.3899 41.5436 36.1482C43.6366 32.9064 44.6831 30.1017 44.6831 27.734C44.6831 24.2278 43.5734 21.3336 41.3539 19.0515C39.1344 16.7694 36.3494 15.629 32.9991 15.6303C29.6488 15.6315 26.8639 16.7719 24.6444 19.0515C22.4249 21.3311 21.3151 24.2252 21.3151 27.734C21.3151 30.1004 22.3616 32.9052 24.4546 36.1482C26.5489 39.3899 29.397 42.5799 32.9991 45.7142ZM32.9991 47.399C32.6988 47.399 32.3985 47.3498 32.0983 47.2514C31.798 47.153 31.522 46.9933 31.2703 46.7723C29.9069 45.52 28.525 44.1241 27.1245 42.5843C25.7228 41.0459 24.4501 39.4531 23.3065 37.8061C22.1629 36.159 21.2257 34.4768 20.4948 32.7595C19.7639 31.0422 19.3984 29.367 19.3984 27.734C19.3984 23.6796 20.7184 20.3357 23.3583 17.7022C25.9982 15.0687 29.2118 13.7513 32.9991 13.75C36.7864 13.7487 40.0001 15.0661 42.6399 17.7022C45.2798 20.3382 46.5998 23.6822 46.5998 27.734C46.5998 29.3683 46.2343 31.0377 45.5034 32.7423C44.7726 34.4455 43.841 36.1271 42.7089 37.7869C41.5781 39.448 40.3125 41.0414 38.912 42.5671C37.5116 44.0928 36.1284 45.4823 34.7624 46.7358C34.5184 46.9569 34.2411 47.123 33.9306 47.2342C33.6201 47.3453 33.309 47.4003 32.9972 47.399M33.0029 30.4844C33.8565 30.4844 34.5848 30.1803 35.1879 29.5721C35.791 28.9639 36.0926 28.2336 36.0926 27.3813C36.0926 26.5291 35.7891 25.8007 35.1822 25.1963C34.5752 24.5919 33.845 24.2904 32.9914 24.2917C32.1379 24.2929 31.4095 24.5971 30.8064 25.204C30.2033 25.8109 29.9018 26.5412 29.9018 27.3948C29.9018 28.2483 30.2052 28.9766 30.8122 29.5798C31.4191 30.1829 32.1494 30.4844 33.0029 30.4844Z" fill="url(#paint1_linear_1008_5331)"/><defs><linearGradient id="paint0_linear_1008_5331" x1="3.56231" y1="5.45755" x2="63.2483" y2="47.1337" gradientUnits="userSpaceOnUse"><stop offset="0.00399963" stop-color="#F57A78"/><stop offset="0.229" stop-color="#F94F63"/><stop offset="0.539" stop-color="#B73CB7"/><stop offset="1" stop-color="#7B5BDD"/></linearGradient><linearGradient id="paint1_linear_1008_5331" x1="20.8892" y1="16.5752" x2="49.067" y2="32.4805" gradientUnits="userSpaceOnUse"><stop offset="0.00399963" stop-color="#F57A78"/><stop offset="0.229" stop-color="#F94F63"/><stop offset="0.539" stop-color="#B73CB7"/><stop offset="1" stop-color="#7B5BDD"/></linearGradient></defs></svg></span>\
+          <div class="map__point_block">\
+            <div class="map__point_temp"><br>г. Москва,ул. Старокалужское шоссе, д. 62</div>\
+          </div>\
+        </div>',
+        "latitude": 55.660607,
+        "longitude": 37.538170,
+        },
+      ],
+    };
+
+    var mapCoordinates = new ymaps.GeoObjectCollection();
+
+    var results = [];
+    data.points.forEach(function(item, index){
+      results.push(createPlacemark(item));
+    });
+    myMap.geoObjects.add(mapCoordinates);
+    myMap.behaviors.disable('scrollZoom');
+
+    function createPlacemark(item) {
+      var options = Object();
+      var squareLayout = ymaps.templateLayoutFactory.createClass(item.infoPoint);
+      var place = new ymaps.Placemark([item.latitude, item.longitude],{hintContent: false}, {
+        iconLayout: squareLayout,
+        iconShape: {   
+          type: 'Rectangle',
+          coordinates: [
+            [-55, -50], [30, 50]
+          ]
+        }
+      });
+      mapCoordinates.add(place);
+    }
+    var thatCoordinates;
+    mapCoordinates.events.add('click', function (e) {
+      var that = e.get('target').properties.get('active');
+      mapCoordinates.each(function(item, index){
+        item.properties.set('active', false);
+        if(e.get('target') == item && !that){
+          e.get('target').properties.set('active', true);
+          thatCoordinates = e.get('coords');
+        }
+      });
+
+      var mapmoscow = document.getElementById('mapmoscow');
+      if (mapmoscow.classList.contains("map__active")) {
+        myMap.setCenter([55.660607, 37.538170],17);
+      } else {
+        myMap.setCenter([55.660607, 37.538170],9);
+      };
+    });
+  }
+  if (ymaps != undefined) ymaps.ready(init);
+}
+// end yandex map
