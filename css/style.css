@@ -6029,6 +6029,29 @@ html.has-scroll-dragging {
 .aboutus__heading,
 .aboutus__description {
   max-width: 700px;
+  position: relative;
+  z-index: 3;
+  color: var(--text-lgray);
+}
+
+.aboutus__heading {
+  -webkit-transition: color 0.3s linear;
+  transition: color 0.3s linear;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__one_block.one .aboutus__one_one .aboutus__heading,
+.aboutus__one_block.two .aboutus__one_two .aboutus__heading,
+.aboutus__one_block.three .aboutus__one_three .aboutus__heading,
+.aboutus__one_block.four .aboutus__one_four .aboutus__heading {
+  color: var(--text);
+}
+
+.aboutus__one_block.close .aboutus__one_one .aboutus__heading,
+.aboutus__one_block.close .aboutus__one_two .aboutus__heading,
+.aboutus__one_block.close .aboutus__one_three .aboutus__heading,
+.aboutus__one_block.close .aboutus__one_four .aboutus__heading {
   color: var(--text-lgray);
 }
 
@@ -6060,12 +6083,102 @@ html.has-scroll-dragging {
   border-radius: 7px;
   background-color: var(--bg);
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__one_flex::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__one_block.one .aboutus__one_one::before,
+.aboutus__one_block.two .aboutus__one_two::before,
+.aboutus__one_block.three .aboutus__one_three::before,
+.aboutus__one_block.four .aboutus__one_four::before {
+  opacity: 1;
+}
+
+.aboutus__one_block.close .aboutus__one_one::before,
+.aboutus__one_block.close .aboutus__one_two::before,
+.aboutus__one_block.close .aboutus__one_three::before,
+.aboutus__one_block.close .aboutus__one_four::before {
+  opacity: 0;
+}
+
+.aboutus__one_flex::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 7px;
+}
+
+.aboutus__one_block.one .aboutus__one_one,
+.aboutus__one_block.two .aboutus__one_two,
+.aboutus__one_block.three .aboutus__one_three,
+.aboutus__one_block.four .aboutus__one_four {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.aboutus__one_block.close .aboutus__one_one,
+.aboutus__one_block.close .aboutus__one_two,
+.aboutus__one_block.close .aboutus__one_three,
+.aboutus__one_block.close .aboutus__one_four {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .aboutus__one_image {
   width: 66px;
   height: 47px;
+  position: relative;
+  z-index: 3;
   object-fit: contain;
+  filter: grayscale(100%);
+  -webkit-transition: filter 0.3s linear;
+  transition: filter 0.3s linear;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__one_block.one .aboutus__one_one .aboutus__one_image,
+.aboutus__one_block.two .aboutus__one_two .aboutus__one_image,
+.aboutus__one_block.three .aboutus__one_three .aboutus__one_image,
+.aboutus__one_block.four .aboutus__one_four .aboutus__one_image {
+  filter: grayscale(0%);
+}
+
+.aboutus__one_block.close .aboutus__one_one .aboutus__one_image,
+.aboutus__one_block.close .aboutus__one_two .aboutus__one_image,
+.aboutus__one_block.close .aboutus__one_three .aboutus__one_image,
+.aboutus__one_block.close .aboutus__one_four .aboutus__one_image {
+  filter: grayscale(100%);
 }
 
 .aboutus__birds_fte {
@@ -6998,11 +7111,17 @@ html.has-scroll-dragging {
   transform: translateX(-50%);
 }
 
-.aboutus__one_lines.one .aboutus__one_line_one {
+.aboutus__one_block.one .aboutus__one_line_one,
+.aboutus__one_block.two .aboutus__one_line_two,
+.aboutus__one_block.three .aboutus__one_line_three,
+.aboutus__one_block.four .aboutus__one_line_four {
   z-index: 2;
 }
 
-.aboutus__one_lines.one .aboutus__one_line_one span::after {
+.aboutus__one_line_one span::after,
+.aboutus__one_line_two span::after,
+.aboutus__one_line_three span::after,
+.aboutus__one_line_four span::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -7014,9 +7133,248 @@ html.has-scroll-dragging {
   background-size: 400% 400%;
   -webkit-animation: gradient-back 5s ease infinite;
   animation: gradient-back 5s ease infinite;
+  -webkit-transition: -webkit-transform 0.5s linear;
+  transition: transform 0.5s linear;
 }
 
-.aboutus__one_lines.one .aboutus__one_line_one span:nth-child(1)::after {
+.aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after  {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.aboutus__one_block.one .aboutus__one_line_one span::after,
+.aboutus__one_block.two .aboutus__one_line_two span::after,
+.aboutus__one_block.three .aboutus__one_line_three span::after,
+.aboutus__one_block.four .aboutus__one_line_four span::after {
+  -webkit-transform: translate(0px,0px);
+  transform: translate(0px,0px);
+}
+
+.aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after {
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after {
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after {
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_line_two span:nth-child(4)::after,
+.aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_line_three span:nth-child(4)::after,
+.aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after {
+  -webkit-transition-delay: 1.5s;
+  transition-delay: 1.5s;
+}
+
+.aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_line_two span:nth-child(5)::after,
+.aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_line_three span:nth-child(5)::after,
+.aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after,
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after {
+  -webkit-transition-delay: 2s;
+  transition-delay: 2s;
 }
 
 /* end aboutus */

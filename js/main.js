@@ -1119,3 +1119,136 @@ if(maps) {
   if (ymaps != undefined) ymaps.ready(init);
 }
 // end yandex map
+
+// start aboutus animate
+const aboutusOne = document.getElementById("aboutus__one");
+if(aboutusOne) {
+  const aboutusOneArr = [
+    {colors: 'one', time: 2500},
+    {colors: 'one close', time: 2500},
+    {colors: 'two', time: 2500},
+    {colors: 'two close', time: 2500},
+    {colors: 'three', time: 2500},
+    {colors: 'three close', time: 2500},
+    {colors: 'four', time: 2500},
+    {colors: 'four close', time: 2500},
+  ];
+  var currentOnePosition = 0;
+  
+  function animationOneClass(currentElement, container) {
+    setTimeout(function() {
+      container.className = "aboutus__one_block " + currentElement.colors;
+      currentOnePosition++;
+      if (currentOnePosition === aboutusOneArr.length) currentOnePosition = 0;
+      animationOneClass(aboutusOneArr[currentOnePosition], container);
+    }, currentElement.time);
+  }
+  animationOneClass(aboutusOneArr[currentOnePosition], aboutusOne);
+}
+
+// const aboutusTwo = document.getElementById("aboutus__two");
+// if(aboutusTwo) {
+//   const aboutusTwoArr = [
+//     {colors: 'one', time: 1000},
+//     {colors: 'one close', time: 1000},
+//     {colors: 'two', time: 1000},
+//     {colors: 'two close', time: 1000},
+//     {colors: 'three', time: 1000},
+//     {colors: 'three close', time: 1000},
+//     {colors: 'four', time: 1000},
+//     {colors: 'four close', time: 1000},
+//     {colors: 'five', time: 1000},
+//     {colors: 'five close', time: 1000},
+//   ];
+//   var currentTwoPosition = 0;
+  
+//   function animationTwoClass(currentElement, container) {
+//     setTimeout(function() {
+//       container.className = "aboutus__two_block " + currentElement.colors;
+//       currentTwoPosition++;
+//       if (currentTwoPosition === aboutusTwoArr.length) currentTwoPosition = 0;
+//       animationTwoClass(aboutusTwoArr[currentTwoPosition], container);
+//     }, currentElement.time);
+//   }
+//   animationTwoClass(aboutusTwoArr[currentTwoPosition], aboutusTwo);
+// }
+
+// const aboutusThree = document.getElementById("aboutus__three");
+// if(aboutusThree) {
+//   const aboutusThreeArr = [
+//     {colors: 'one', time: 1000},
+//     {colors: 'one close', time: 1000},
+//     {colors: 'two', time: 1000},
+//     {colors: 'two close', time: 1000},
+//   ];
+//   var currentThreePosition = 0;
+  
+//   function animationThreeClass(currentElement, container) {
+//     setTimeout(function() {
+//       container.className = "aboutus__three_block " + currentElement.colors;
+//       currentThreePosition++;
+//       if (currentThreePosition === aboutusThreeArr.length) currentThreePosition = 0;
+//       animationThreeClass(aboutusThreeArr[currentThreePosition], container);
+//     }, currentElement.time);
+//   }
+//   animationThreeClass(aboutusThreeArr[currentThreePosition], aboutusThree);
+// }
+
+// const aboutusFour = document.getElementById("aboutus__four");
+// if(aboutusFour) {
+//   const aboutusFourArr = [
+//     {colors: 'one', time: 1000},
+//     {colors: 'one close', time: 1000},
+//     {colors: 'two', time: 1000},
+//     {colors: 'two close', time: 1000},
+//     {colors: 'three', time: 1000},
+//     {colors: 'three close', time: 1000},
+//     {colors: 'four', time: 1000},
+//     {colors: 'four close', time: 1000},
+//     {colors: 'five', time: 1000},
+//     {colors: 'five close', time: 1000},
+//     {colors: 'six', time: 1000},
+//     {colors: 'six close', time: 1000},
+//     {colors: 'seven', time: 1000},
+//     {colors: 'seven close', time: 1000},
+//     {colors: 'eight', time: 1000},
+//     {colors: 'eight close', time: 1000},
+//   ];
+//   var currentFourPosition = 0;
+  
+//   function animationFourClass(currentElement, container) {
+//     setTimeout(function() {
+//       container.className = "aboutus__four_block " + currentElement.colors;
+//       currentFourPosition++;
+//       if (currentFourPosition === aboutusFourArr.length) currentFourPosition = 0;
+//       animationFourClass(aboutusFourArr[currentFourPosition], container);
+//     }, currentElement.time);
+//   }
+//   animationFourClass(aboutusFourArr[currentFourPosition], aboutusFour);
+// }
+
+// const aboutusFive = document.getElementById("aboutus__five");
+// if(aboutusFive) {
+//   const aboutusFiveArr = [
+//     {colors: 'one', time: 1000},
+//     {colors: 'one close', time: 1000},
+//     {colors: 'two', time: 1000},
+//     {colors: 'two close', time: 1000},
+//     {colors: 'three', time: 1000},
+//     {colors: 'three close', time: 1000},
+//     {colors: 'four', time: 1000},
+//     {colors: 'four close', time: 1000},
+//   ];
+//   var currentFivePosition = 0;
+  
+//   function animationFiveClass(currentElement, container) {
+//     setTimeout(function() {
+//       container.className = "aboutus__five_block " + currentElement.colors;
+//       currentFivePosition++;
+//       if (currentFivePosition === aboutusFiveArr.length) currentFivePosition = 0;
+//       animationFiveClass(aboutusFiveArr[currentFivePosition], container);
+//     }, currentElement.time);
+//   }
+//   animationFiveClass(aboutusFiveArr[currentFivePosition], aboutusFive);
+// }
+// end aboutus animate
