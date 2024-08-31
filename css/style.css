@@ -6196,6 +6196,60 @@ html.has-scroll-dragging {
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
 }
 
+.aboutus__birds_fte::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 2.1s;
+  transition-delay: 2.1s;
+}
+
+.aboutus__one_block.one .aboutus__birds_fte::before,
+.aboutus__one_block.two .aboutus__birds_fte::before,
+.aboutus__one_block.three .aboutus__birds_fte::before,
+.aboutus__one_block.four .aboutus__birds_fte::before {
+  opacity: 1;
+  -webkit-transition-delay: 2.1s;
+  transition-delay: 2.1s;
+}
+
+.aboutus__one_block.close .aboutus__birds_fte::before {
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__birds_fte::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 7px;
+}
+
+.aboutus__birds_fte p {
+  position: relative;
+  z-index: 3;
+  background-color: var(--bg-gray);
+}
+
 .aboutus__two_block {
   display: flex;
   flex-direction: column;
@@ -6229,8 +6283,59 @@ html.has-scroll-dragging {
   z-index: 2;
 }
 
+.aboutus__two_sert::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.aboutus__two_sert::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 7px;
+}
+
+.aboutus__two_block.one .aboutus__two_sert::before,
+.aboutus__two_block.two .aboutus__two_sert::before,
+.aboutus__two_block.three .aboutus__two_sert::before,
+.aboutus__two_block.four .aboutus__two_sert::before,
+.aboutus__two_block.five .aboutus__two_sert::before {
+  opacity: 1;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.aboutus__two_block.close .aboutus__two_sert::before {
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
 .aboutus__two_sert p {
   font-weight: 700;
+  position: relative;
+  z-index: 3;
   background-color: var(--bg-gray);
 }
 
@@ -6249,12 +6354,105 @@ html.has-scroll-dragging {
   display: flex;
   width: 120px;
   height: 120px;
+  padding: 20px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
   border-radius: 50%;
   background-color: var(--bg);
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition: filter 0.3s linear, -webkit-transform 0.3s linear;
+  transition: filter 0.3s linear, transform 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__two_flex::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 50%;
+}
+
+.aboutus__two_block.one .aboutus__two_one,
+.aboutus__two_block.two .aboutus__two_two,
+.aboutus__two_block.three .aboutus__two_three,
+.aboutus__two_block.four .aboutus__two_four,
+.aboutus__two_block.five .aboutus__two_five {
+  filter: grayscale(0%);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__two_block.close .aboutus__two_one,
+.aboutus__two_block.close .aboutus__two_two,
+.aboutus__two_block.close .aboutus__two_three,
+.aboutus__two_block.close .aboutus__two_four,
+.aboutus__two_block.close .aboutus__two_five {
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__two_flex::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__two_block.one .aboutus__two_one::before,
+.aboutus__two_block.two .aboutus__two_two::before,
+.aboutus__two_block.three .aboutus__two_three::before,
+.aboutus__two_block.four .aboutus__two_four::before,
+.aboutus__two_block.five .aboutus__two_five::before {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__two_block.close .aboutus__two_one::before,
+.aboutus__two_block.close .aboutus__two_two::before,
+.aboutus__two_block.close .aboutus__two_three::before,
+.aboutus__two_block.close .aboutus__two_four::before,
+.aboutus__two_block.close .aboutus__two_five::before {
+  opacity: 0;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.aboutus__two_flex img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  object-fit: contain;
 }
 
 .aboutus__three_block {
@@ -6272,8 +6470,56 @@ html.has-scroll-dragging {
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
 }
 
+.aboutus__three_pay::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.aboutus__three_pay::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 7px;
+}
+
+.aboutus__three_block.one .aboutus__three_pay::before,
+.aboutus__three_block.two .aboutus__three_pay::before {
+  opacity: 1;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.aboutus__three_block.close .aboutus__three_pay::before {
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
 .aboutus__three_pay p {
   font-weight: 700;
+  position: relative;
+  z-index: 3;
   background-color: var(--bg-gray);
 }
 
@@ -6281,11 +6527,107 @@ html.has-scroll-dragging {
   display: flex;
   width: 120px;
   height: 120px;
+  padding: 25px;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
   border: 1px solid var(--border);
+  background-color: var(--bg);
   border-radius: 50%;
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition: filter 0.3s linear, -webkit-transform 0.3s linear;
+  transition: filter 0.3s linear, transform 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__three_flex::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 50%;
+}
+
+.aboutus__three_block.one .aboutus__three_one,
+.aboutus__three_block.two .aboutus__three_two,
+.aboutus__three_block.three .aboutus__three_three,
+.aboutus__three_block.four .aboutus__three_four,
+.aboutus__three_block.five .aboutus__three_five {
+  filter: grayscale(0%);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__three_block.close .aboutus__three_one,
+.aboutus__three_block.close .aboutus__three_two,
+.aboutus__three_block.close .aboutus__three_three,
+.aboutus__three_block.close .aboutus__three_four,
+.aboutus__three_block.close .aboutus__three_five {
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__three_flex::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__three_block.one .aboutus__three_one::before,
+.aboutus__three_block.two .aboutus__three_two::before,
+.aboutus__three_block.three .aboutus__three_three::before,
+.aboutus__three_block.four .aboutus__three_four::before,
+.aboutus__three_block.five .aboutus__three_five::before {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__three_block.close .aboutus__three_one::before,
+.aboutus__three_block.close .aboutus__three_two::before,
+.aboutus__three_block.close .aboutus__three_three::before,
+.aboutus__three_block.close .aboutus__three_four::before,
+.aboutus__three_block.close .aboutus__three_five::before {
+  opacity: 0;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.aboutus__three_flex img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  object-fit: contain;
 }
 
 .aboutus__three_flex:last-child {
@@ -7114,20 +7456,35 @@ html.has-scroll-dragging {
 .aboutus__one_block.one .aboutus__one_line_one,
 .aboutus__one_block.two .aboutus__one_line_two,
 .aboutus__one_block.three .aboutus__one_line_three,
-.aboutus__one_block.four .aboutus__one_line_four {
+.aboutus__one_block.four .aboutus__one_line_four,
+.aboutus__two_block.one .aboutus__two_line_one,
+.aboutus__two_block.two .aboutus__two_line_two,
+.aboutus__two_block.three .aboutus__two_line_three,
+.aboutus__two_block.four .aboutus__two_line_four,
+.aboutus__two_block.five .aboutus__two_line_five,
+.aboutus__three_block.one .aboutus__one_line_one,
+.aboutus__three_block.two .aboutus__one_line_two {
   z-index: 2;
 }
 
 .aboutus__one_line_one span::after,
 .aboutus__one_line_two span::after,
 .aboutus__one_line_three span::after,
-.aboutus__one_line_four span::after {
+.aboutus__one_line_four span::after,
+.aboutus__two_line_one span::after,
+.aboutus__two_line_two span::after,
+.aboutus__two_line_three span::after,
+.aboutus__two_line_four span::after,
+.aboutus__two_line_five span::after,
+.aboutus__three_line_one span::after,
+.aboutus__three_line_two span::after {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   background-color: var(--purple);
   background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
   background-size: 400% 400%;
@@ -7149,6 +7506,10 @@ html.has-scroll-dragging {
 .aboutus__one_line_two span:nth-child(5)::after,
 .aboutus__one_line_three span:nth-child(5)::after,
 .aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__two_line_one span:nth-child(1)::after,
+.aboutus__two_line_two span:nth-child(1)::after,
+.aboutus__two_line_three span:nth-child(1)::after,
+.aboutus__three_line_one span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
@@ -7160,19 +7521,39 @@ html.has-scroll-dragging {
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after {
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after,
+.aboutus__two_block.close .aboutus__two_line_one span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_two span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_three span:nth-child(1)::after,
+.aboutus__three_block.close .aboutus__three_line_one span:nth-child(1)::after {
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
+}
+
+.aboutus__two_line_four span:nth-child(1)::after,
+.aboutus__two_line_five span:nth-child(1)::after,
+.aboutus__three_line_two span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_four span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_five span:nth-child(1)::after,
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(1)::after {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
 }
 
 .aboutus__one_line_one span:nth-child(4)::after,
 .aboutus__one_line_two span:nth-child(4)::after,
 .aboutus__one_line_three span:nth-child(2)::after,
 .aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__two_line_one span:nth-child(2)::after,
+.aboutus__two_line_four span:nth-child(2)::after,
+.aboutus__three_line_one span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after {
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
+.aboutus__two_block.close .aboutus__two_line_one span:nth-child(2)::after,
+.aboutus__two_block.close .aboutus__two_line_four span:nth-child(2)::after,
+.aboutus__three_block.close .aboutus__three_line_one span:nth-child(2)::after {
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
 }
@@ -7181,10 +7562,16 @@ html.has-scroll-dragging {
 .aboutus__one_line_two span:nth-child(2)::after,
 .aboutus__one_line_three span:nth-child(4)::after,
 .aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__two_line_three span:nth-child(2)::after,
+.aboutus__two_line_five span:nth-child(2)::after,
+.aboutus__three_line_two span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after  {
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
+.aboutus__two_block.close .aboutus__two_line_three span:nth-child(2)::after,
+.aboutus__two_block.close .aboutus__two_line_five span:nth-child(2)::after,
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(2)::after {
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
 }
@@ -7192,186 +7579,99 @@ html.has-scroll-dragging {
 .aboutus__one_block.one .aboutus__one_line_one span::after,
 .aboutus__one_block.two .aboutus__one_line_two span::after,
 .aboutus__one_block.three .aboutus__one_line_three span::after,
-.aboutus__one_block.four .aboutus__one_line_four span::after {
+.aboutus__one_block.four .aboutus__one_line_four span::after,
+.aboutus__two_block.one .aboutus__two_line_one span::after,
+.aboutus__two_block.two .aboutus__two_line_two span::after,
+.aboutus__two_block.three .aboutus__two_line_three span::after,
+.aboutus__two_block.four .aboutus__two_line_four span::after,
+.aboutus__two_block.five .aboutus__two_line_five span::after,
+.aboutus__three_block.one .aboutus__three_line_one span::after,
+.aboutus__three_block.two .aboutus__three_line_two span::after {
   -webkit-transform: translate(0px,0px);
   transform: translate(0px,0px);
 }
 
 .aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_line_two span:nth-child(1)::after,
-.aboutus__one_line_two span:nth-child(1)::after,
-.aboutus__one_line_two span:nth-child(1)::after,
 .aboutus__one_line_two span:nth-child(1)::after,
 .aboutus__one_line_three span:nth-child(1)::after,
-.aboutus__one_line_three span:nth-child(1)::after,
-.aboutus__one_line_three span:nth-child(1)::after,
-.aboutus__one_line_three span:nth-child(1)::after,
 .aboutus__one_line_four span:nth-child(1)::after,
-.aboutus__one_line_four span:nth-child(1)::after,
-.aboutus__one_line_four span:nth-child(1)::after,
-.aboutus__one_line_four span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
+.aboutus__two_line_one span:nth-child(1)::after,
+.aboutus__two_line_two span:nth-child(1)::after,
+.aboutus__two_line_three span:nth-child(1)::after,
+.aboutus__two_line_four span:nth-child(1)::after,
+.aboutus__two_line_five span:nth-child(1)::after,
+.aboutus__three_line_one span:nth-child(1)::after,
+.aboutus__three_line_two span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(5)::after {
+.aboutus__two_block.close .aboutus__two_line_one span:nth-child(2)::after,
+.aboutus__two_block.close .aboutus__two_line_three span:nth-child(2)::after,
+.aboutus__two_block.close .aboutus__two_line_four span:nth-child(2)::after,
+.aboutus__two_block.close .aboutus__two_line_five span:nth-child(2)::after,
+.aboutus__three_block.close .aboutus__three_line_one span:nth-child(2)::after,
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(2)::after {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
 
 .aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_line_two span:nth-child(2)::after,
-.aboutus__one_line_two span:nth-child(2)::after,
-.aboutus__one_line_two span:nth-child(2)::after,
 .aboutus__one_line_two span:nth-child(2)::after,
 .aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_line_three span:nth-child(2)::after,
 .aboutus__one_line_four span:nth-child(2)::after,
-.aboutus__one_line_four span:nth-child(2)::after,
-.aboutus__one_line_four span:nth-child(2)::after,
-.aboutus__one_line_four span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
+.aboutus__two_line_one span:nth-child(2)::after,
+.aboutus__two_line_three span:nth-child(2)::after,
+.aboutus__two_line_four span:nth-child(2)::after,
+.aboutus__two_line_five span:nth-child(2)::after,
+.aboutus__three_line_one span:nth-child(2)::after,
+.aboutus__three_line_two span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after {
+.aboutus__two_block.close .aboutus__two_line_one span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_two span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_three span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_four span:nth-child(1)::after,
+.aboutus__two_block.close .aboutus__two_line_five span:nth-child(1)::after,
+.aboutus__three_block.close .aboutus__three_line_one span:nth-child(1)::after,
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(1)::after {
   -webkit-transition-delay: 0.5s;
   transition-delay: 0.5s;
 }
 
 .aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_line_two span:nth-child(3)::after,
-.aboutus__one_line_two span:nth-child(3)::after,
-.aboutus__one_line_two span:nth-child(3)::after,
 .aboutus__one_line_two span:nth-child(3)::after,
 .aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_line_four span:nth-child(3)::after,
-.aboutus__one_line_four span:nth-child(3)::after,
-.aboutus__one_line_four span:nth-child(3)::after,
 .aboutus__one_line_four span:nth-child(3)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
 .aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after {
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
 }
 
 .aboutus__one_line_one span:nth-child(4)::after,
-.aboutus__one_line_one span:nth-child(4)::after,
-.aboutus__one_line_one span:nth-child(4)::after,
-.aboutus__one_line_one span:nth-child(4)::after,
-.aboutus__one_line_two span:nth-child(4)::after,
-.aboutus__one_line_two span:nth-child(4)::after,
-.aboutus__one_line_two span:nth-child(4)::after,
 .aboutus__one_line_two span:nth-child(4)::after,
 .aboutus__one_line_three span:nth-child(4)::after,
-.aboutus__one_line_three span:nth-child(4)::after,
-.aboutus__one_line_three span:nth-child(4)::after,
-.aboutus__one_line_three span:nth-child(4)::after,
-.aboutus__one_line_four span:nth-child(4)::after,
-.aboutus__one_line_four span:nth-child(4)::after,
-.aboutus__one_line_four span:nth-child(4)::after,
 .aboutus__one_line_four span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after {
   -webkit-transition-delay: 1.5s;
   transition-delay: 1.5s;
 }
 
 .aboutus__one_line_one span:nth-child(5)::after,
-.aboutus__one_line_one span:nth-child(5)::after,
-.aboutus__one_line_one span:nth-child(5)::after,
-.aboutus__one_line_one span:nth-child(5)::after,
-.aboutus__one_line_two span:nth-child(5)::after,
-.aboutus__one_line_two span:nth-child(5)::after,
-.aboutus__one_line_two span:nth-child(5)::after,
 .aboutus__one_line_two span:nth-child(5)::after,
 .aboutus__one_line_three span:nth-child(5)::after,
-.aboutus__one_line_three span:nth-child(5)::after,
-.aboutus__one_line_three span:nth-child(5)::after,
-.aboutus__one_line_three span:nth-child(5)::after,
-.aboutus__one_line_four span:nth-child(5)::after,
-.aboutus__one_line_four span:nth-child(5)::after,
-.aboutus__one_line_four span:nth-child(5)::after,
 .aboutus__one_line_four span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_four span:nth-child(1)::after {
   -webkit-transition-delay: 2s;
   transition-delay: 2s;

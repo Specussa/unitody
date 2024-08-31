@@ -1146,53 +1146,53 @@ if(aboutusOne) {
   animationOneClass(aboutusOneArr[currentOnePosition], aboutusOne);
 }
 
-// const aboutusTwo = document.getElementById("aboutus__two");
-// if(aboutusTwo) {
-//   const aboutusTwoArr = [
-//     {colors: 'one', time: 1000},
-//     {colors: 'one close', time: 1000},
-//     {colors: 'two', time: 1000},
-//     {colors: 'two close', time: 1000},
-//     {colors: 'three', time: 1000},
-//     {colors: 'three close', time: 1000},
-//     {colors: 'four', time: 1000},
-//     {colors: 'four close', time: 1000},
-//     {colors: 'five', time: 1000},
-//     {colors: 'five close', time: 1000},
-//   ];
-//   var currentTwoPosition = 0;
+const aboutusTwo = document.getElementById("aboutus__two");
+if(aboutusTwo) {
+  const aboutusTwoArr = [
+    {colors: 'one', time: 1500},
+    {colors: 'one close', time: 1500},
+    {colors: 'two', time: 1500},
+    {colors: 'two close', time: 1500},
+    {colors: 'three', time: 1500},
+    {colors: 'three close', time: 1500},
+    {colors: 'four', time: 1500},
+    {colors: 'four close', time: 1500},
+    {colors: 'five', time: 1500},
+    {colors: 'five close', time: 1500},
+  ];
+  var currentTwoPosition = 0;
   
-//   function animationTwoClass(currentElement, container) {
-//     setTimeout(function() {
-//       container.className = "aboutus__two_block " + currentElement.colors;
-//       currentTwoPosition++;
-//       if (currentTwoPosition === aboutusTwoArr.length) currentTwoPosition = 0;
-//       animationTwoClass(aboutusTwoArr[currentTwoPosition], container);
-//     }, currentElement.time);
-//   }
-//   animationTwoClass(aboutusTwoArr[currentTwoPosition], aboutusTwo);
-// }
+  function animationTwoClass(currentElement, container) {
+    setTimeout(function() {
+      container.className = "aboutus__two_block " + currentElement.colors;
+      currentTwoPosition++;
+      if (currentTwoPosition === aboutusTwoArr.length) currentTwoPosition = 0;
+      animationTwoClass(aboutusTwoArr[currentTwoPosition], container);
+    }, currentElement.time);
+  }
+  animationTwoClass(aboutusTwoArr[currentTwoPosition], aboutusTwo);
+}
 
-// const aboutusThree = document.getElementById("aboutus__three");
-// if(aboutusThree) {
-//   const aboutusThreeArr = [
-//     {colors: 'one', time: 1000},
-//     {colors: 'one close', time: 1000},
-//     {colors: 'two', time: 1000},
-//     {colors: 'two close', time: 1000},
-//   ];
-//   var currentThreePosition = 0;
+const aboutusThree = document.getElementById("aboutus__three");
+if(aboutusThree) {
+  const aboutusThreeArr = [
+    {colors: 'one', time: 1500},
+    {colors: 'one close', time: 1500},
+    {colors: 'two', time: 1500},
+    {colors: 'two close', time: 1500},
+  ];
+  var currentThreePosition = 0;
   
-//   function animationThreeClass(currentElement, container) {
-//     setTimeout(function() {
-//       container.className = "aboutus__three_block " + currentElement.colors;
-//       currentThreePosition++;
-//       if (currentThreePosition === aboutusThreeArr.length) currentThreePosition = 0;
-//       animationThreeClass(aboutusThreeArr[currentThreePosition], container);
-//     }, currentElement.time);
-//   }
-//   animationThreeClass(aboutusThreeArr[currentThreePosition], aboutusThree);
-// }
+  function animationThreeClass(currentElement, container) {
+    setTimeout(function() {
+      container.className = "aboutus__three_block " + currentElement.colors;
+      currentThreePosition++;
+      if (currentThreePosition === aboutusThreeArr.length) currentThreePosition = 0;
+      animationThreeClass(aboutusThreeArr[currentThreePosition], container);
+    }, currentElement.time);
+  }
+  animationThreeClass(aboutusThreeArr[currentThreePosition], aboutusThree);
+}
 
 // const aboutusFour = document.getElementById("aboutus__four");
 // if(aboutusFour) {
