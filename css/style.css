@@ -6048,11 +6048,30 @@ html.has-scroll-dragging {
   color: var(--text);
 }
 
+
+.aboutus__four_block.one .aboutus__four_one .aboutus__heading,
+.aboutus__four_block.two .aboutus__four_two .aboutus__heading,
+.aboutus__four_block.three .aboutus__four_three .aboutus__heading,
+.aboutus__four_block.four .aboutus__four_four .aboutus__heading {
+  color: var(--text);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
 .aboutus__one_block.close .aboutus__one_one .aboutus__heading,
 .aboutus__one_block.close .aboutus__one_two .aboutus__heading,
 .aboutus__one_block.close .aboutus__one_three .aboutus__heading,
 .aboutus__one_block.close .aboutus__one_four .aboutus__heading {
   color: var(--text-lgray);
+}
+
+.aboutus__four_block.close .aboutus__four_one .aboutus__heading,
+.aboutus__four_block.close .aboutus__four_two .aboutus__heading,
+.aboutus__four_block.close .aboutus__four_three .aboutus__heading,
+.aboutus__four_block.close .aboutus__four_four .aboutus__heading {
+  color: var(--text-lgray);
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
 }
 
 .aboutus__description {
@@ -6656,6 +6675,7 @@ html.has-scroll-dragging {
 
 .aboutus__four_lists {
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   gap: 30px;
   position: relative;
@@ -6674,13 +6694,100 @@ html.has-scroll-dragging {
   border: 1px solid var(--border);
   background-color: var(--bg);
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
+  border-radius: 7px;
   text-align: center;
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition: filter 0.3s linear, -webkit-transform 0.3s linear;
+  transition: filter 0.3s linear, transform 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__four_flex::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 7px;
+}
+
+.aboutus__four_block.one .aboutus__four_one,
+.aboutus__four_block.two .aboutus__four_two,
+.aboutus__four_block.three .aboutus__four_three,
+.aboutus__four_block.four .aboutus__four_four,
+.aboutus__four_block.five .aboutus__four_five {
+  filter: grayscale(0%);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__four_block.close .aboutus__four_one,
+.aboutus__four_block.close .aboutus__four_two,
+.aboutus__four_block.close .aboutus__four_three,
+.aboutus__four_block.close .aboutus__four_four,
+.aboutus__four_block.close .aboutus__four_five {
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.aboutus__four_flex::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__four_block.one .aboutus__four_one::before,
+.aboutus__four_block.two .aboutus__four_two::before,
+.aboutus__four_block.three .aboutus__four_three::before,
+.aboutus__four_block.four .aboutus__four_four::before,
+.aboutus__four_block.five .aboutus__four_five::before {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__four_block.close .aboutus__four_one::before,
+.aboutus__four_block.close .aboutus__four_two::before,
+.aboutus__four_block.close .aboutus__four_three::before,
+.aboutus__four_block.close .aboutus__four_four::before,
+.aboutus__four_block.close .aboutus__four_five::before {
+  opacity: 0;
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
 }
 
 .aboutus__four_image {
   display: flex;
   width: 40px;
   margin: 0 0 auto;
+  position: relative;
+  z-index: 3;
   object-fit: contain;
 }
 
@@ -6699,7 +6806,57 @@ html.has-scroll-dragging {
   text-align: center;
 }
 
+.aboutus__four_tech::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 1.1s;
+  transition-delay: 1.1s;
+}
+
+.aboutus__four_tech::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 7px;
+}
+
+.aboutus__four_block.one .aboutus__four_tech::before,
+.aboutus__four_block.two .aboutus__four_tech::before,
+.aboutus__four_block.three .aboutus__four_tech::before,
+.aboutus__four_block.four .aboutus__four_tech::before {
+  opacity: 1;
+  -webkit-transition-delay: 1.1s;
+  transition-delay: 1.1s;
+}
+
+.aboutus__four_block.close .aboutus__four_tech::before {
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
 .aboutus__four_tech p {
+  position: relative;
+  z-index: 3;
   font-weight: 700;
   background-color: var(--bg-gray);
 }
@@ -6732,7 +6889,7 @@ html.has-scroll-dragging {
   display: flex;
   width: 80px;
   height: 80px;
-  padding: 10px;
+  padding: 15px;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
@@ -6740,27 +6897,183 @@ html.has-scroll-dragging {
   border-radius: 50%;
   background-color: var(--bg);
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition: filter 0.3s linear, -webkit-transform 0.3s linear;
+  transition: filter 0.3s linear, transform 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__five_flex::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 50%;
+}
+
+.aboutus__five_block.one .aboutus__five_one,
+.aboutus__five_block.two .aboutus__five_two,
+.aboutus__five_block.three .aboutus__five_three,
+.aboutus__five_block.four .aboutus__five_four,
+.aboutus__five_block.five .aboutus__five_five,
+.aboutus__five_block.six .aboutus__five_six,
+.aboutus__five_block.seven .aboutus__five_seven,
+.aboutus__five_block.eight .aboutus__five_eight {
+  filter: grayscale(0%);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__five_block.close .aboutus__five_one,
+.aboutus__five_block.close .aboutus__five_two,
+.aboutus__five_block.close .aboutus__five_three,
+.aboutus__five_block.close .aboutus__five_four,
+.aboutus__five_block.close .aboutus__five_five,
+.aboutus__five_block.close .aboutus__five_six,
+.aboutus__five_block.close .aboutus__five_seven,
+.aboutus__five_block.close .aboutus__five_eight {
+  filter: grayscale(100%);
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.aboutus__five_flex::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__five_block.one .aboutus__five_one::before,
+.aboutus__five_block.two .aboutus__five_two::before,
+.aboutus__five_block.three .aboutus__five_three::before,
+.aboutus__five_block.four .aboutus__five_four::before,
+.aboutus__five_block.five .aboutus__five_five::before,
+.aboutus__five_block.six .aboutus__five_six::before,
+.aboutus__five_block.seven .aboutus__five_seven::before,
+.aboutus__five_block.eight .aboutus__five_eight::before {
+  opacity: 1;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__five_block.close .aboutus__five_one::before,
+.aboutus__five_block.close .aboutus__five_two::before,
+.aboutus__five_block.close .aboutus__five_three::before,
+.aboutus__five_block.close .aboutus__five_four::before,
+.aboutus__five_block.close .aboutus__five_five::before,
+.aboutus__five_block.close .aboutus__five_six::before,
+.aboutus__five_block.close .aboutus__five_seven::before,
+.aboutus__five_block.close .aboutus__five_eight::before {
+  opacity: 0;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
 }
 
 .aboutus__five_image {
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 3;
   object-fit: contain;
 }
 
 .aboutus__five_inter {
   display: flex;
   width: 210px;
-  height: 80px;
+  padding: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  position: relative;
   background-color: var(--bg-gray);
   border: 1px solid var(--border);
   border-radius: 7px;
   box-shadow: 4px 4px 25.9px 0px #E4E4E440;
   text-align: center;
+}
+
+.aboutus__five_inter::before {
+  content: "";
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  background-color: var(--purple);
+  background: linear-gradient(124.92deg, #F57A78 7%, #F94F63 25.1%, #B73CB7 50.03%, #7B5BDD 87.11%);
+  background-size: 400% 400%;
+  border-radius: 7px;
+  opacity: 0;
+  -webkit-animation: gradient-back 5s ease infinite;
+  animation: gradient-back 5s ease infinite;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.aboutus__five_inter::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--bg);
+  border-radius: 7px;
+}
+
+.aboutus__five_block.one .aboutus__five_inter::before,
+.aboutus__five_block.two .aboutus__five_inter::before,
+.aboutus__five_block.three .aboutus__five_inter::before,
+.aboutus__five_block.four .aboutus__five_inter::before,
+.aboutus__five_block.five .aboutus__five_inter::before,
+.aboutus__five_block.six .aboutus__five_inter::before,
+.aboutus__five_block.seven .aboutus__five_inter::before,
+.aboutus__five_block.eight .aboutus__five_inter::before {
+  opacity: 1;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.aboutus__five_block.close .aboutus__five_inter::before {
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.aboutus__five_inter p {
+  position: relative;
+  z-index: 3;
 }
 
 .aboutus__five_inter p.text_color {
@@ -7463,7 +7776,19 @@ html.has-scroll-dragging {
 .aboutus__two_block.four .aboutus__two_line_four,
 .aboutus__two_block.five .aboutus__two_line_five,
 .aboutus__three_block.one .aboutus__one_line_one,
-.aboutus__three_block.two .aboutus__one_line_two {
+.aboutus__three_block.two .aboutus__one_line_two,
+.aboutus__four_block.one .aboutus__four_line_one,
+.aboutus__four_block.two .aboutus__four_line_two,
+.aboutus__four_block.three .aboutus__four_line_three,
+.aboutus__four_block.four .aboutus__four_line_four,
+.aboutus__five_block.one .aboutus__five_line_one,
+.aboutus__five_block.two .aboutus__five_line_two,
+.aboutus__five_block.three .aboutus__five_line_three,
+.aboutus__five_block.four .aboutus__five_line_four,
+.aboutus__five_block.five .aboutus__five_line_five,
+.aboutus__five_block.six .aboutus__five_line_six,
+.aboutus__five_block.seven .aboutus__five_line_seven,
+.aboutus__five_block.eight .aboutus__five_line_eight {
   z-index: 2;
 }
 
@@ -7477,7 +7802,19 @@ html.has-scroll-dragging {
 .aboutus__two_line_four span::after,
 .aboutus__two_line_five span::after,
 .aboutus__three_line_one span::after,
-.aboutus__three_line_two span::after {
+.aboutus__three_line_two span::after,
+.aboutus__four_line_one span::after,
+.aboutus__four_line_two span::after,
+.aboutus__four_line_three span::after,
+.aboutus__four_line_four span::after,
+.aboutus__five_line_one span::after,
+.aboutus__five_line_two span::after,
+.aboutus__five_line_three span::after,
+.aboutus__five_line_four span::after,
+.aboutus__five_line_five span::after,
+.aboutus__five_line_six span::after,
+.aboutus__five_line_seven span::after,
+.aboutus__five_line_eight span::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -7510,6 +7847,9 @@ html.has-scroll-dragging {
 .aboutus__two_line_two span:nth-child(1)::after,
 .aboutus__two_line_three span:nth-child(1)::after,
 .aboutus__three_line_one span:nth-child(1)::after,
+.aboutus__five_line_one span:nth-child(1)::after,
+.aboutus__five_line_two span:nth-child(2)::after,
+.aboutus__five_line_three span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(1)::after,
@@ -7525,7 +7865,10 @@ html.has-scroll-dragging {
 .aboutus__two_block.close .aboutus__two_line_one span:nth-child(1)::after,
 .aboutus__two_block.close .aboutus__two_line_two span:nth-child(1)::after,
 .aboutus__two_block.close .aboutus__two_line_three span:nth-child(1)::after,
-.aboutus__three_block.close .aboutus__three_line_one span:nth-child(1)::after {
+.aboutus__three_block.close .aboutus__three_line_one span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_one span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_two span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_three span:nth-child(2)::after {
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
 }
@@ -7533,9 +7876,31 @@ html.has-scroll-dragging {
 .aboutus__two_line_four span:nth-child(1)::after,
 .aboutus__two_line_five span:nth-child(1)::after,
 .aboutus__three_line_two span:nth-child(1)::after,
+.aboutus__four_line_one span:nth-child(1)::after,
+.aboutus__four_line_two span:nth-child(1)::after,
+.aboutus__four_line_three span:nth-child(1)::after,
+.aboutus__four_line_four span:nth-child(1)::after,
+.aboutus__four_line_one span:nth-child(3)::after,
+.aboutus__four_line_two span:nth-child(3)::after,
+.aboutus__four_line_three span:nth-child(3)::after,
+.aboutus__four_line_four span:nth-child(3)::after,
+.aboutus__five_line_six span:nth-child(2)::after,
+.aboutus__five_line_seven span:nth-child(2)::after,
+.aboutus__five_line_eight span:nth-child(1)::after,
 .aboutus__two_block.close .aboutus__two_line_four span:nth-child(1)::after,
 .aboutus__two_block.close .aboutus__two_line_five span:nth-child(1)::after,
-.aboutus__three_block.close .aboutus__three_line_two span:nth-child(1)::after {
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_one span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_two span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_three span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_four span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_one span:nth-child(3)::after,
+.aboutus__four_block.close .aboutus__four_line_two span:nth-child(3)::after,
+.aboutus__four_block.close .aboutus__four_line_three span:nth-child(3)::after,
+.aboutus__four_block.close .aboutus__four_line_four span:nth-child(3)::after,
+.aboutus__five_block.close .aboutus__five_line_six span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_seven span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_eight span:nth-child(1)::after {
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
 }
@@ -7547,13 +7912,23 @@ html.has-scroll-dragging {
 .aboutus__two_line_one span:nth-child(2)::after,
 .aboutus__two_line_four span:nth-child(2)::after,
 .aboutus__three_line_one span:nth-child(2)::after,
+.aboutus__four_line_one span:nth-child(2)::after,
+.aboutus__four_line_two span:nth-child(2)::after,
+.aboutus__five_line_two span:nth-child(1)::after,
+.aboutus__five_line_four span:nth-child(1)::after,
+.aboutus__five_line_six span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_four span:nth-child(2)::after,
 .aboutus__two_block.close .aboutus__two_line_one span:nth-child(2)::after,
 .aboutus__two_block.close .aboutus__two_line_four span:nth-child(2)::after,
-.aboutus__three_block.close .aboutus__three_line_one span:nth-child(2)::after {
+.aboutus__three_block.close .aboutus__three_line_one span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_one span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_two span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_two span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_four span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_six span:nth-child(1)::after {
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
 }
@@ -7565,13 +7940,23 @@ html.has-scroll-dragging {
 .aboutus__two_line_three span:nth-child(2)::after,
 .aboutus__two_line_five span:nth-child(2)::after,
 .aboutus__three_line_two span:nth-child(2)::after,
+.aboutus__four_line_three span:nth-child(2)::after,
+.aboutus__four_line_four span:nth-child(2)::after,
+.aboutus__five_line_three span:nth-child(1)::after,
+.aboutus__five_line_five span:nth-child(1)::after,
+.aboutus__five_line_seven span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_four span:nth-child(4)::after,
 .aboutus__two_block.close .aboutus__two_line_three span:nth-child(2)::after,
 .aboutus__two_block.close .aboutus__two_line_five span:nth-child(2)::after,
-.aboutus__three_block.close .aboutus__three_line_two span:nth-child(2)::after {
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_three span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_four span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_three span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_five span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_seven span:nth-child(1)::after {
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
 }
@@ -7586,7 +7971,19 @@ html.has-scroll-dragging {
 .aboutus__two_block.four .aboutus__two_line_four span::after,
 .aboutus__two_block.five .aboutus__two_line_five span::after,
 .aboutus__three_block.one .aboutus__three_line_one span::after,
-.aboutus__three_block.two .aboutus__three_line_two span::after {
+.aboutus__three_block.two .aboutus__three_line_two span::after,
+.aboutus__four_block.one .aboutus__four_line_one span::after,
+.aboutus__four_block.two .aboutus__four_line_two span::after,
+.aboutus__four_block.three .aboutus__four_line_three span::after,
+.aboutus__four_block.four .aboutus__four_line_four span::after,
+.aboutus__five_block.one .aboutus__five_line_one span::after,
+.aboutus__five_block.two .aboutus__five_line_two span::after,
+.aboutus__five_block.three .aboutus__five_line_three span::after,
+.aboutus__five_block.four .aboutus__five_line_four span::after,
+.aboutus__five_block.five .aboutus__five_line_five span::after,
+.aboutus__five_block.six .aboutus__five_line_six span::after,
+.aboutus__five_block.seven .aboutus__five_line_seven span::after,
+.aboutus__five_block.eight .aboutus__five_line_eight span::after {
   -webkit-transform: translate(0px,0px);
   transform: translate(0px,0px);
 }
@@ -7602,6 +7999,18 @@ html.has-scroll-dragging {
 .aboutus__two_line_five span:nth-child(1)::after,
 .aboutus__three_line_one span:nth-child(1)::after,
 .aboutus__three_line_two span:nth-child(1)::after,
+.aboutus__four_line_one span:nth-child(3)::after,
+.aboutus__four_line_two span:nth-child(3)::after,
+.aboutus__four_line_three span:nth-child(3)::after,
+.aboutus__four_line_four span:nth-child(3)::after,
+.aboutus__five_line_one span:nth-child(1)::after,
+.aboutus__five_line_two span:nth-child(1)::after,
+.aboutus__five_line_three span:nth-child(1)::after,
+.aboutus__five_line_four span:nth-child(1)::after,
+.aboutus__five_line_five span:nth-child(1)::after,
+.aboutus__five_line_six span:nth-child(1)::after,
+.aboutus__five_line_seven span:nth-child(1)::after,
+.aboutus__five_line_eight span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(5)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(5)::after,
@@ -7611,7 +8020,15 @@ html.has-scroll-dragging {
 .aboutus__two_block.close .aboutus__two_line_four span:nth-child(2)::after,
 .aboutus__two_block.close .aboutus__two_line_five span:nth-child(2)::after,
 .aboutus__three_block.close .aboutus__three_line_one span:nth-child(2)::after,
-.aboutus__three_block.close .aboutus__three_line_two span:nth-child(2)::after {
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_one span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_two span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_three span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_four span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_two span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_three span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_six span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_seven span:nth-child(2)::after {
   -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
@@ -7626,6 +8043,14 @@ html.has-scroll-dragging {
 .aboutus__two_line_five span:nth-child(2)::after,
 .aboutus__three_line_one span:nth-child(2)::after,
 .aboutus__three_line_two span:nth-child(2)::after,
+.aboutus__four_line_one span:nth-child(2)::after,
+.aboutus__four_line_two span:nth-child(2)::after,
+.aboutus__four_line_three span:nth-child(2)::after,
+.aboutus__four_line_four span:nth-child(2)::after,
+.aboutus__five_line_two span:nth-child(2)::after,
+.aboutus__five_line_three span:nth-child(2)::after,
+.aboutus__five_line_six span:nth-child(2)::after,
+.aboutus__five_line_seven span:nth-child(2)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after,
@@ -7636,7 +8061,19 @@ html.has-scroll-dragging {
 .aboutus__two_block.close .aboutus__two_line_four span:nth-child(1)::after,
 .aboutus__two_block.close .aboutus__two_line_five span:nth-child(1)::after,
 .aboutus__three_block.close .aboutus__three_line_one span:nth-child(1)::after,
-.aboutus__three_block.close .aboutus__three_line_two span:nth-child(1)::after {
+.aboutus__three_block.close .aboutus__three_line_two span:nth-child(1)::after,
+.aboutus__four_block.close .aboutus__four_line_one span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_two span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_three span:nth-child(2)::after,
+.aboutus__four_block.close .aboutus__four_line_four span:nth-child(2)::after,
+.aboutus__five_block.close .aboutus__five_line_one span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_two span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_three span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_four span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_five span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_six span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_seven span:nth-child(1)::after,
+.aboutus__five_block.close .aboutus__five_line_eight span:nth-child(1)::after {
   -webkit-transition-delay: 0.5s;
   transition-delay: 0.5s;
 }
@@ -7645,10 +8082,18 @@ html.has-scroll-dragging {
 .aboutus__one_line_two span:nth-child(3)::after,
 .aboutus__one_line_three span:nth-child(3)::after,
 .aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__four_line_one span:nth-child(1)::after,
+.aboutus__four_line_two span:nth-child(1)::after,
+.aboutus__four_line_three span:nth-child(1)::after,
+.aboutus__four_line_four span:nth-child(1)::after,
 .aboutus__one_block.close .aboutus__one_line_one span:nth-child(3)::after,
 .aboutus__one_block.close .aboutus__one_line_two span:nth-child(3)::after,
 .aboutus__one_block.close .aboutus__one_line_three span:nth-child(3)::after,
-.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after {
+.aboutus__one_block.close .aboutus__one_line_four span:nth-child(3)::after,
+.aboutus__four_block.close .aboutus__four_line_one span:nth-child(3)::after,
+.aboutus__four_block.close .aboutus__four_line_two span:nth-child(3)::after,
+.aboutus__four_block.close .aboutus__four_line_three span:nth-child(3)::after,
+.aboutus__four_block.close .aboutus__four_line_four span:nth-child(3)::after {
   -webkit-transition-delay: 1s;
   transition-delay: 1s;
 }
@@ -11088,10 +11533,9 @@ html.has-scroll-dragging {
     width: 100%;
   }
   
-
   .aboutus__four_lists,
   .aboutus__one_list {
-    gap: 20px;
+    gap: 40px 20px;
   }
   .aboutus__four_flex,
   .aboutus__one_flex {
@@ -11109,6 +11553,200 @@ html.has-scroll-dragging {
   }
   .aboutus__five_lists {
     gap: 20px;
+  }
+  .aboutus__one_line_one span:nth-child(2) {
+    width: calc(50% - (50% - 10px)/2);
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_one span:nth-child(3) {
+    height: calc(70px + 20px);
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_one span:nth-child(4) {
+    width: calc(50% - (50% - 10px)/2);
+    top: calc(64px + 60px + 70px + 70px + 20px);
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_one span:nth-child(5) {
+    height: calc(40px + 60px + 60px + 40px + 60px);
+    top: calc(64px + 60px + 70px + 70px + 20px);
+  }
+  .aboutus__one_line_two span:nth-child(2) {
+    width: calc(50% - (50% - 10px)/2);
+    left: auto;
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_two span:nth-child(2)::after,
+  .aboutus__one_block.close .aboutus__one_line_two span:nth-child(2)::after {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  .aboutus__one_line_two span:nth-child(3) {
+    height: calc(70px + 20px);
+    left: auto;
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_two span:nth-child(4) {
+    width: calc(50% - (50% - 10px)/2);
+    top: calc(64px + 60px + 70px + 70px + 20px);
+    left: auto;
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_two span:nth-child(4)::after,
+  .aboutus__one_block.close .aboutus__one_line_two span:nth-child(4)::after {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .aboutus__one_line_two span:nth-child(5) {
+    height: calc(40px + 60px + 60px + 40px + 60px);
+    top: calc(64px + 60px + 70px + 70px + 20px);
+    left: 50%;
+  }
+  .aboutus__one_line_three span:nth-child(2) {
+    width: calc(50% - (50% - 10px)/2);
+    right: auto;
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_three span:nth-child(2)::after,
+  .aboutus__one_block.close .aboutus__one_line_three span:nth-child(2)::after {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .aboutus__one_line_three span:nth-child(3) {
+    height: calc(70px + 20px + 70px + 20px);
+    right: auto;
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_three span:nth-child(4) {
+    width: calc(50% - (50% - 10px)/2);
+    top: calc(64px + 60px + 70px + 70px + 20px + 70px + 20px);
+    right: auto;
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_three span:nth-child(4)::after,
+  .aboutus__one_block.close .aboutus__one_line_three span:nth-child(4)::after {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  .aboutus__one_line_three span:nth-child(5) {
+    height: calc(20px + 60px + 70px + 20px);
+    top: calc(64px + 60px + 70px + 70px + 20px + 70px + 20px);
+    right: 50%;
+  }
+  .aboutus__one_line_four span:nth-child(2) {
+    width: calc(50% - (50% - 10px) / 2);
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_four span:nth-child(3) {
+    height: calc(70px + 20px + 70px + 20px);
+    top: calc(64px + 60px + 70px);
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_four span:nth-child(4) {
+    width: calc(50% - (50% - 10px) / 2);
+    top: calc(64px + 60px + 70px + 70px + 20px + 70px + 20px);
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__one_line_four span:nth-child(5) {
+    height: calc(20px + 60px + 70px + 20px);
+    top: calc(64px + 60px + 70px + 70px + 20px + 70px + 20px);
+  }
+  .aboutus__two_bottom {
+    max-width: 100%;
+  }
+  .aboutus__two_line_four span:nth-child(1) {
+    left: 60px;
+  }
+  .aboutus__two_line_four span:nth-child(2) {
+    width: calc(50% - 60px);
+    left: 60px;
+  }
+  .aboutus__two_line_five span:nth-child(1) {
+    right: 60px;
+  }
+  .aboutus__two_line_five span:nth-child(2) {
+    width: calc(50% - 60px);
+    right: 60px;
+  }
+  .aboutus__four_line_one span:nth-child(2) {
+    width: calc(50% - (50% - 10px) / 2);
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__four_line_one span:nth-child(3) {
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__four_line_two span:nth-child(2) {
+    width: calc(50% - (50% - 10px) / 2);
+    left: auto;
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__four_line_two span:nth-child(2)::after,
+  .aboutus__four_block.close .aboutus__four_line_two span:nth-child(2)::after {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+  .aboutus__four_line_two span:nth-child(3) {
+    height: calc(85px + 45px);
+    left: auto;
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__four_line_three span:nth-child(2) {
+    width: calc(50% - (50% - 10px) / 2);
+    top: calc(70px + 45px);
+    right: auto;
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__four_line_three span:nth-child(2)::after,
+  .aboutus__four_block.close .aboutus__four_line_three span:nth-child(2)::after {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  .aboutus__four_line_three span:nth-child(3) {
+    height: calc(85px + 45px + 40px + 150px);
+    right: auto;
+    left: calc((50% - 10px) / 2);
+  }
+  .aboutus__four_line_four span:nth-child(2) {
+    width: calc(50% - (50% - 10px) / 2);
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__four_line_four span:nth-child(3) {
+    height: calc(85px + 45px + 40px + 150px);
+    right: calc((50% - 10px) / 2);
+  }
+  .aboutus__five_line_two span:nth-child(1) {
+    width: calc(50% - 40px);
+    top: calc(80px + 40px + 20px);
+    left: 40px;
+  }
+  .aboutus__five_line_two span:nth-child(2) {
+    top: calc(80px + 40px + 20px);
+  }
+  .aboutus__five_line_three span:nth-child(1) {
+    width: calc(50% - 40px);
+    top: calc(80px + 40px + 20px);
+    right: 40px;
+  }
+  .aboutus__five_line_three span:nth-child(2) {
+    top: calc(80px + 40px + 20px);
+  }
+  .aboutus__five_line_six span:nth-child(1) {
+    width: calc(50% - 40px);
+    left: 40px;
+    bottom: calc(80px + 40px + 20px);
+  }
+  .aboutus__five_line_six span:nth-child(2) {
+    height: calc(40px + 40px + 20px);
+    bottom: calc(80px + 40px + 20px);
+  }
+  .aboutus__five_line_seven span:nth-child(1) {
+    width: calc(50% - 40px);
+    right: 40px;
+    bottom: calc(80px + 40px + 20px);
+  }
+  .aboutus__five_line_seven span:nth-child(2) {
+    height: calc(40px + 40px + 20px);
+    bottom: calc(80px + 40px + 20px);
   }
 }
 /* end 767px */

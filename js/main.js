@@ -1194,61 +1194,61 @@ if(aboutusThree) {
   animationThreeClass(aboutusThreeArr[currentThreePosition], aboutusThree);
 }
 
-// const aboutusFour = document.getElementById("aboutus__four");
-// if(aboutusFour) {
-//   const aboutusFourArr = [
-//     {colors: 'one', time: 1000},
-//     {colors: 'one close', time: 1000},
-//     {colors: 'two', time: 1000},
-//     {colors: 'two close', time: 1000},
-//     {colors: 'three', time: 1000},
-//     {colors: 'three close', time: 1000},
-//     {colors: 'four', time: 1000},
-//     {colors: 'four close', time: 1000},
-//     {colors: 'five', time: 1000},
-//     {colors: 'five close', time: 1000},
-//     {colors: 'six', time: 1000},
-//     {colors: 'six close', time: 1000},
-//     {colors: 'seven', time: 1000},
-//     {colors: 'seven close', time: 1000},
-//     {colors: 'eight', time: 1000},
-//     {colors: 'eight close', time: 1000},
-//   ];
-//   var currentFourPosition = 0;
+const aboutusFour = document.getElementById("aboutus__four");
+if(aboutusFour) {
+  const aboutusFourArr = [
+    {colors: 'one', time: 2000},
+    {colors: 'one close', time: 2000},
+    {colors: 'two', time: 2000},
+    {colors: 'two close', time: 2000},
+    {colors: 'three', time: 2000},
+    {colors: 'three close', time: 2000},
+    {colors: 'four', time: 2000},
+    {colors: 'four close', time: 2000},
+  ];
+  var currentFourPosition = 0;
   
-//   function animationFourClass(currentElement, container) {
-//     setTimeout(function() {
-//       container.className = "aboutus__four_block " + currentElement.colors;
-//       currentFourPosition++;
-//       if (currentFourPosition === aboutusFourArr.length) currentFourPosition = 0;
-//       animationFourClass(aboutusFourArr[currentFourPosition], container);
-//     }, currentElement.time);
-//   }
-//   animationFourClass(aboutusFourArr[currentFourPosition], aboutusFour);
-// }
+  function animationFourClass(currentElement, container) {
+    setTimeout(function() {
+      container.className = "aboutus__four_block " + currentElement.colors;
+      currentFourPosition++;
+      if (currentFourPosition === aboutusFourArr.length) currentFourPosition = 0;
+      animationFourClass(aboutusFourArr[currentFourPosition], container);
+    }, currentElement.time);
+  }
+  animationFourClass(aboutusFourArr[currentFourPosition], aboutusFour);
+}
 
-// const aboutusFive = document.getElementById("aboutus__five");
-// if(aboutusFive) {
-//   const aboutusFiveArr = [
-//     {colors: 'one', time: 1000},
-//     {colors: 'one close', time: 1000},
-//     {colors: 'two', time: 1000},
-//     {colors: 'two close', time: 1000},
-//     {colors: 'three', time: 1000},
-//     {colors: 'three close', time: 1000},
-//     {colors: 'four', time: 1000},
-//     {colors: 'four close', time: 1000},
-//   ];
-//   var currentFivePosition = 0;
+const aboutusFive = document.getElementById("aboutus__five");
+if(aboutusFive) {
+  const aboutusFiveArr = [
+    {colors: 'one', time: 1500},
+    {colors: 'one close', time: 1500},
+    {colors: 'two', time: 1500},
+    {colors: 'two close', time: 1500},
+    {colors: 'three', time: 1500},
+    {colors: 'three close', time: 1500},
+    {colors: 'four', time: 1500},
+    {colors: 'four close', time: 1500},
+    {colors: 'five', time: 1500},
+    {colors: 'five close', time: 1500},
+    {colors: 'six', time: 1500},
+    {colors: 'six close', time: 1500},
+    {colors: 'seven', time: 1500},
+    {colors: 'seven close', time: 1500},
+    {colors: 'eight', time: 1500},
+    {colors: 'eight close', time: 1500},
+  ];
+  var currentFivePosition = 0;
   
-//   function animationFiveClass(currentElement, container) {
-//     setTimeout(function() {
-//       container.className = "aboutus__five_block " + currentElement.colors;
-//       currentFivePosition++;
-//       if (currentFivePosition === aboutusFiveArr.length) currentFivePosition = 0;
-//       animationFiveClass(aboutusFiveArr[currentFivePosition], container);
-//     }, currentElement.time);
-//   }
-//   animationFiveClass(aboutusFiveArr[currentFivePosition], aboutusFive);
-// }
+  function animationFiveClass(currentElement, container) {
+    setTimeout(function() {
+      container.className = "aboutus__five_block " + currentElement.colors;
+      currentFivePosition++;
+      if (currentFivePosition === aboutusFiveArr.length) currentFivePosition = 0;
+      animationFiveClass(aboutusFiveArr[currentFivePosition], container);
+    }, currentElement.time);
+  }
+  animationFiveClass(aboutusFiveArr[currentFivePosition], aboutusFive);
+}
 // end aboutus animate
