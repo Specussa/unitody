@@ -1,19 +1,13 @@
 // start video
 document.addEventListener("DOMContentLoaded", () => {
-  const preview = document.querySelector('.showreel__button');
-  const showreelmodal = document.querySelector('.showreel__modal');
-  const showreelmodalClose = document.querySelector('.showreel__modal_close');
-  const showreelvideor = document.querySelector('.showreel__video_responsive');
-  document.querySelector('.showreel__block').innerHTML = '<video poster="./img/terminals/video/video_1.webp " playsinline autoplay muted loop><source src="./img/terminals/video/video_1.mp4" type="video/mp4"></video>';
-  showreelvideor.innerHTML = '<video id="showreel__video" poster="./img/terminals/video/video_1.webp " playsinline autoplay loop data-overlay="1" data-title="Unitodi"><source src="./img/terminals/video/video_1.mp4" type="video/mp4"></video>';
   setTimeout(function() {
     const showreelvideo = document.getElementById('showreel__video');
     if(showreelvideo){
       showreelvideo.pause();
       showreelvideo.currentTime = 0;
-      preview.onclick = function(e) {
+      document.querySelector('.showreel__button').onclick = function(e) {
         e.preventDefault();
-        showreelmodal.classList.add('showreel__modal_visible');
+        document.querySelector('.showreel__modal').classList.add('showreel__modal_visible');
         document.querySelector('.spec__overlay').classList.add('is-playing');
         showreelvideo.play();
         document.body.style.overflow = "hidden";
@@ -21,11 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
         var t;
         window.addEventListener('mousemove', () => {
           if (t) {
-            showreelmodal.classList.remove('hide')
+            document.querySelector('.showreel__modal').classList.remove('hide')
             clearTimeout(t)
             t = 0
           }
-          t = setTimeout(() => showreelmodal.classList.add('hide'), 1500)
+          t = setTimeout(() => document.querySelector('.showreel__modal').classList.add('hide'), 1500)
         });
         const progress = document.querySelector('.progress');
         const progressLine = document.querySelector('.progress__line');
@@ -33,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
           progressLine.style.left = e.offsetX + 'px';
         });
       }
-      showreelmodalClose.onclick = function() {
+      document.querySelector('.showreel__modal_close').onclick = function() {
         document.querySelector('.spec__overlay').classList.remove('is-playing');
-        showreelmodal.classList.remove('showreel__modal_visible');
+        document.querySelector('.showreel__modal').classList.remove('showreel__modal_visible');
         showreelvideo.pause();
         showreelvideo.currentTime = 0;
         document.body.style.overflow = null;

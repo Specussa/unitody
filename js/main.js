@@ -10,6 +10,9 @@ const appHeight = () => {
     if (document.querySelector('.history__rotate')) {
       document.querySelector('.history__rotate').style.height = document.querySelector('.history__rotate').clientWidth + 'px';
     }
+    if (document.querySelector('.hero_rotate__rotate')) {
+      document.querySelector('.hero_rotate__rotate').style.height = document.querySelector('.hero_rotate__rotate').clientWidth + 'px';
+    }
   }
   oldWidth = window.innerWidth;
 }
@@ -37,21 +40,9 @@ languageButtons.forEach(button => {
 // end language
 
 // start scroll
-scroll = new LocomotiveScroll({el: document.querySelector('[data-scroll-container]'),smooth:true,getDirection: true,scrollFromAnywhere: true,breakpoint: 0,inertia: 1.7,mobile: {breakpoint: 0,smooth: false,inertia: 0,},tablet: {breakpoint: 0,smooth: false,inertia: 1.7,},smartphone: {breakpoint: 0,smooth: false,inertia: 1.7,}})
+scroll = new LocomotiveScroll({el: document.querySelector('[data-scroll-container]'),smooth:true,getDirection: true,scrollFromAnywhere: true,breakpoint: 0,inertia: 2.7,mobile: {breakpoint: 0,smooth: false,inertia: 0,},tablet: {breakpoint: 0,smooth: false,inertia: 2.7,},smartphone: {breakpoint: 0,smooth: false,inertia: 2.7,}})
 // scroll = new LocomotiveScroll({el: document.querySelector('[data-scroll-container]'),smooth: true,getDirection: true,scrollFromAnywhere: true,breakpoint: 0,inertia: 0,tablet: {breakpoint: 0,smooth: false,inertia: 0,}})
 new ResizeObserver(() => scroll.update()).observe(document.querySelector("[data-scroll-container]"));
-
-const hn_scroll = document.querySelector('.header__nav_scroll');
-const hc_scroll = document.querySelector('.header__consultation_scroll');
-const cp_scroll = document.querySelector('.career_popup__scroll');
-const fp_scroll = document.querySelector('.feedback_popup__scroll');
-const gp_scroll = document.querySelector('.generation_popup__scroll');
-
-// Scrollbar.init(hn_scroll);
-// Scrollbar.init(hc_scroll);
-// if (cp_scroll) {Scrollbar.init(cp_scroll);}
-// if (fp_scroll) {Scrollbar.init(fp_scroll);}
-// if (gp_scroll) {Scrollbar.init(gp_scroll);}
 
 const header = document.querySelector('.header');
 const projecttop = document.querySelector('.project_top');
@@ -97,151 +88,6 @@ if (!document.querySelector('.has-scroll-smooth')) {
   });
 }
 // end scroll
-
-// start cursor
-document.addEventListener("DOMContentLoaded", () => {
-  const cursor = document.querySelector(".cursor");
-  const cursorBlock = cursor.querySelector(".cursor__block");
-  const a = document.querySelectorAll('a');
-  const button = document.querySelectorAll('button');
-  const label = document.querySelectorAll('label');
-  const hslanguageicon = document.querySelectorAll('.header__set_language_icon');
-  const sinview = document.querySelectorAll('.showreel__button');
-  const cursorgrab = document.querySelectorAll('.c-scrollbar_thumb');
-  const buttonnext = document.querySelectorAll('.swiper-button-next');
-  const buttonprev = document.querySelectorAll('.swiper-button-prev');
-  const sliders = document.querySelectorAll(".swiper-wrapper");
-
-  document.addEventListener('mousemove', function(e){
-    let ctx = e.clientX;
-    let cty = e.clientY;
-    if (ctx > (document.body.offsetWidth - 5) || cty > (document.body.offsetHeight - 5) || ctx < 5 || cty < 5) {
-      cursor.classList.add('leave')
-    } else {
-      cursor.classList.remove('leave')
-    }
-  });
-  
-  function moveCursor(event) {
-    var cursorX = event.clientX + "px";
-    var cursorY = event.clientY + "px";
-    cursor.style.transform = `translate3d(${cursorX}, ${cursorY}, 0)`;
-  }
-
-  document.onmousemove = (event) => {
-    moveCursor(event);
-    cursor.classList.remove("active");
-  };
-
-  document.onpointermove = (event) => {
-    moveCursor(event);
-    cursor.classList.remove("active");
-  };
-
-  document.addEventListener('mousedown', function(){
-    cursor.classList.add('active')
-  });
-
-  document.addEventListener('mouseup', function(){
-    cursor.classList.remove('active')
-  });
-  
-  sinview.forEach(item => {
-    item.onmouseenter = () => {
-      cursor.classList.add("cursor__showreel");
-    };
-    item.onmouseleave = () => {
-      cursor.classList.remove("cursor__showreel");
-      cursorBlock.classList.remove("active");
-    };
-    item.onpointerdown = () => {
-      cursorBlock.classList.add("active");
-    };
-    item.onpointerup = () => {
-      cursorBlock.classList.remove("active");
-    };
-  });
-
-  cursorgrab.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  });
-  
-  sliders.forEach(item => {
-    item.onmouseenter = () => {
-      cursor.classList.add("cursor__slider");
-    };
-    item.onmouseleave = () => {
-      cursor.classList.remove("cursor__slider");
-      cursorBlock.classList.remove("active");
-    };
-    item.onpointerdown = () => {
-      cursorBlock.classList.add("active");
-    };
-    item.onpointerup = () => {
-      cursorBlock.classList.remove("active");
-    };
-  });
-
-  a.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  })
-
-  button.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  })
-
-  hslanguageicon.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  })
-
-  label.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  })
-
-  buttonnext.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  })
-
-  buttonprev.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-    });
-  })
-});
-// end cursor
 
 // start year
 const year = document.querySelector('.footer__year');
@@ -443,16 +289,19 @@ if(headerPopup){
   for (i = 0; i < hslSvg.length; i++) {
     hslSvg[i].onclick = function(e) {
       e.preventDefault();
-      headerSubNavActive.forEach((n) => n.classList.remove("active"));
-      headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
-      headerSublinkActive.forEach((n) => n.classList.remove("active"));
-      this.parentElement.classList.add("active");
-      this.parentElement.parentElement.parentElement.parentElement.nextElementSibling.classList.add("active");
       let index = this.parentElement.parentElement ? [...this.parentElement.parentElement.parentNode.children].indexOf(this.parentElement.parentElement) : -1;
-      this.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index].classList.add("active");
-      overlay.classList.add("active");
-      document.documentElement.classList.add("noscroll");
-      scroll.stop();
+      if(this.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index]) {
+        headerSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSubSubNavActive.forEach((n) => n.classList.remove("active"));
+        headerSublinkActive.forEach((n) => n.classList.remove("active"));
+        this.parentElement.classList.add("active");
+        this.parentElement.parentElement.parentElement.parentElement.nextElementSibling.classList.add("active");
+        console.log(index)
+        this.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children[1].children[0].children[index].classList.add("active");
+        overlay.classList.add("active");
+        document.documentElement.classList.add("noscroll");
+        scroll.stop();
+      }
     };
   }
 
@@ -578,8 +427,8 @@ if(heroImageSlider){
       clickable: true,
     },
     navigation: {
-      nextEl: ".hero__next",
-      prevEl: ".hero__prev"
+      nextEl: ".hero__image_next",
+      prevEl: ".hero__image_prev"
     },
     on: {
       slideChange: function (swiper) {
@@ -676,11 +525,11 @@ if (document.querySelector(".products_slider__swiper")) {
 }
 // end products_slider
 
-// start history___swiper
-const historySlider = document.querySelector('.history___swiper');
+// start history__swiper
+const historySlider = document.querySelector('.history__swiper');
 const historyActive = document.querySelectorAll(".history__rotate .history__information");
 if(historySlider){
-  var historySwiper = new Swiper('.history___swiper', {
+  var historySwiper = new Swiper('.history__swiper', {
     loop: true,
     effect: "fade",
     slidesPerView: 1,
@@ -760,13 +609,13 @@ if(historySlider){
       }
     }
   });
-  if(document.querySelector('.history___wrapper').children.length >= 10) {
+  if(document.querySelector('.history__wrapper').children.length >= 10) {
     var historytotalzero = '';
   } else {
     var historytotalzero = '0';
   }
 
-  document.querySelector('.history__total').innerHTML = historytotalzero + document.querySelector('.history___wrapper').children.length;
+  document.querySelector('.history__total').innerHTML = historytotalzero + document.querySelector('.history__wrapper').children.length;
   document.querySelector('.history__rotate').style.transform = 'rotate(' + 360  + 'deg)';
 
   const historycounter = document.querySelectorAll('.history__rotate');
@@ -794,7 +643,7 @@ if(historySlider){
     }
   }
 }
-// end history___swiper
+// end history__swiper
 
 // start partner__list
 const partnerlist = document.querySelector('.partner__list');
@@ -826,13 +675,105 @@ if(partnerlist){
 }
 // end partner__list
 
+// start hero_rotate__swiper
+const hero_rotateSlider = document.querySelector('.hero_rotate__swiper');
+const hero_rotateActive = document.querySelectorAll(".hero_rotate__rotate .hero_rotate__information");
+if(hero_rotateSlider){
+  var herorotateSwiper = new Swiper('.hero_rotate__swiper', {
+    loop: true,
+    effect: "fade",
+    slidesPerView: 1,
+    loopedSlides: 1,
+    spaceBetween: 20,
+    a11y: false,
+    speed: 300,
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: false
+    // },
+    pagination: {
+      el: '.hero_rotate__pagination',
+      type: 'bullets',
+      renderBullet: function (index, className) {
+        if((index + 1) >= 10) {
+          var herorotatecountzero = '';
+        } else {
+          var herorotatecountzero = '0';
+        }
+        return '<span class="' + className + '" index="' + (index + 1) + '">' + '<span class="count">' + herorotatecountzero + (index + 1) + "</span>" + "</span>";
+      },
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".hero_rotate__next",
+      prevEl: ".hero_rotate__prev"
+    },
+    on: {
+      slideChange: function (swiper) {
+        const count = document.querySelector('.hero_rotate__pagination .swiper-pagination-bullet-active .count');
+        if (count) {
+          const hero_rotatecount = document.querySelector('.hero_rotate__count');
+          hero_rotatecount.innerHTML = count.innerHTML;
+        }
+
+        let index = document.querySelector('.hero_rotate__pagination .swiper-pagination-bullet-active').getAttribute('index');
+        hero_rotateActive.forEach((n) => n.classList.remove("active"));
+        document.querySelector(".hero_rotate__rotate").children[index-1].classList.add("active");
+        const total = document.querySelector('.hero_rotate__rotate').children.length;
+        const rotate = 360 / total;
+        let information = document.querySelectorAll(".hero_rotate__information");
+        let rotateNext = (index-1)*rotate;
+        document.querySelector('.hero_rotate__rotate').style.transform = 'rotate(' + (360 - rotateNext) + 'deg)';
+        for (let i = 0; i < information.length; i++) {
+          information[i].children[0].style.transform = 'rotate(' + (0 - (((i+1)*rotate)-rotateNext)) + 'deg)';
+        }
+        document.querySelector(".hero_rotate__text_mobile").innerText = document.querySelector(".hero_rotate__information.active").children[0].children[0].children[0].children[0].innerText;
+        document.querySelector(".hero_rotate__heading_mobile").innerText = document.querySelector(".hero_rotate__information.active").children[0].children[1].innerText;
+      }
+    }
+  });
+  if(document.querySelector('.hero_rotate__wrapper').children.length >= 10) {
+    var herorotatetotalzero = '';
+  } else {
+    var herorotatetotalzero = '0';
+  }
+
+  document.querySelector('.hero_rotate__total').innerHTML = herorotatetotalzero + document.querySelector('.hero_rotate__wrapper').children.length;
+  document.querySelector('.hero_rotate__rotate').style.transform = 'rotate(' + 360  + 'deg)';
+
+  const herorotatecounter = document.querySelectorAll('.hero_rotate__rotate');
+  [...herorotatecounter].forEach(function (li) {for (let [index, elem] of [...li.children].entries()){
+    elem.children[0].children[0].children[0].children[0].innerHTML = index+1;
+    elem.children[0].children[0].setAttribute("index", index);
+  }});
+  
+  document.querySelector('.hero_rotate__rotate').style.height = document.querySelector('.hero_rotate__rotate').clientWidth + 'px';
+  document.querySelector('.hero_rotate__rotate').children[0].classList.add('active');
+  const herorotateTotal = document.querySelector('.hero_rotate__rotate').children.length;
+  const herorotateRotate = 360 / herorotateTotal;
+  let hero_rotateInformation = document.querySelectorAll(".hero_rotate__information");
+  for (let i = 0; i < hero_rotateInformation.length; i++) {
+    hero_rotateInformation[i].style.transform = 'rotate(' + ((i+1)*herorotateRotate) + 'deg)';
+    hero_rotateInformation[i].children[0].style.transform = 'rotate(' + '-' + ((i+1)*herorotateRotate) + 'deg)';
+  }
+  document.querySelector(".hero_rotate__text_mobile").innerText = document.querySelector(".hero_rotate__information.active").children[0].children[0].children[0].children[0].innerText;
+  document.querySelector(".hero_rotate__heading_mobile").innerText = document.querySelector(".hero_rotate__information.active").children[0].children[1].innerText;
+  const herorotateButton = document.getElementsByClassName("hero_rotate__button");
+  for (i = 0; i < herorotateButton.length; i++) {
+    herorotateButton[i].onclick = function(e) {
+      herorotateSwiper.slideToLoop(this.getAttribute('index'), 0);
+    }
+  }
+}
+// end hero_rotate__swiper
+
 // start canwedo__information
 const canwedoButton = document.querySelector('.canwedo__button');
 const canwedoButtonActive = document.querySelectorAll(".canwedo__buttons .canwedo__button");
-const canwedoButtonOne = document.querySelector('.canwedo__button_one');
-const canwedoButtonTwo = document.querySelector('.canwedo__button_two');
-const canwedoButtonThree = document.querySelector('.canwedo__button_three');
-const canwedoButtonFour = document.querySelector('.canwedo__button_four');
+const canwedoButtonOne = document.querySelector('.canwedo__button_1');
+const canwedoButtonTwo = document.querySelector('.canwedo__button_2');
+const canwedoButtonThree = document.querySelector('.canwedo__button_3');
+const canwedoButtonFour = document.querySelector('.canwedo__button_4');
 
 const canwedoinformationActive = document.querySelectorAll(".canwedo__informations .canwedo__information");
 const canwedoinformationOne = document.querySelector('.canwedo__information_1');
